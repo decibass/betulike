@@ -299,46 +299,49 @@ updateCD();setInterval(updateCD,1000);
 
 // ===== FORM =====
 function submitForm(){
-  var name=document.getElementById("input-name").value.trim();
-  var email=document.getElementById("input-email").value.trim();
-  var msg=document.getElementById("form-msg");
-  var btn=document.getElementById("form-submit");
+var name=document.getElementById("input-name").value.trim();
+var email=document.getElementById("input-email").value.trim();
+var msg=document.getElementById("form-msg");
+var btn=document.getElementById("form-submit");
 
-  if(!name){msg.textContent="Digite seu nome.";msg.style.color="#aa0000";return;}
-  if(!email||email.indexOf("@")<0){msg.textContent="Digite um e-mail válido.";msg.style.color="#aa0000";return;}
+if(!name){msg.textContent="Digite seu nome.";msg.style.color="#aa0000";return;}
+if(!email||email.indexOf("@")<0){msg.textContent="Digite um e-mail válido.";msg.style.color="#aa0000";return;}
 
-  btn.disabled=true;
-  btn.textContent="INVOCANDO...";
-  msg.textContent="";
+btn.disabled=true;
+btn.textContent="INVOCANDO...";
+msg.textContent="";
 
+var numero=Math.floor(Math.random()*9000)+1000;
+
+// Tenta salvar no Apps Script se configurado
+if(API_URL && API_URL.indexOf("script.google.com")>=0){
   var url=API_URL+"?action=saveEmail&nome="+encodeURIComponent(name)+"&email="+encodeURIComponent(email);
-
   fetch(url,{method:"GET",redirect:"follow"}).then(function(r){return r.text();}).then(function(t){
-    try{var data=JSON.parse(t);}catch(e){var data={numero:Math.floor(Math.random()*9000)+1000};}
-
-    // Hide form, show reward
-    document.getElementById("form-section").style.display="none";
-    var reward=document.getElementById("reward-section");
-    reward.classList.add("show");
-
-    // Set card name and number
-    document.getElementById("card-name-display").textContent=name.toUpperCase();
-    document.getElementById("card-number-display").textContent="Nº "+(data.numero||Math.floor(Math.random()*9000)+1000);
-
-    // Check if audio files exist
-    var snippet=document.getElementById("audio-snippet");
-    var message=document.getElementById("audio-message");
-    snippet.addEventListener("error",function(){this.style.display="none";});
-    message.addEventListener("error",function(){this.style.display="none";});
-
-  }).catch(function(e){
-    // Fallback: show reward anyway (offline mode)
-    document.getElementById("form-section").style.display="none";
-    var reward=document.getElementById("reward-section");
-    reward.classList.add("show");
-    document.getElementById("card-name-display").textContent=name.toUpperCase();
-    document.getElementById("card-number-display").textContent="Nº "+Math.floor(Math.random()*9000)+1000;
+    try{var data=JSON.parse(t);if(data.numero)numero=data.numero;}catch(e){}
+    showReward(name,numero);
+  }).catch(function(){
+    showReward(name,numero);
   });
+} else {
+  // Sem API: funciona localmente mesmo assim
+  setTimeout(function(){
+    showReward(name,numero);
+  },1500);
+}
+}
+
+function showReward(name,numero){
+document.getElementById("form-section").style.display="none";
+var reward=document.getElementById("reward-section");
+reward.classList.add("show");
+document.getElementById("card-name-display").textContent=name.toUpperCase();
+document.getElementById("card-number-display").textContent="Nº "+numero;
+
+// Esconder players se áudio não existir
+var snippet=document.getElementById("audio-snippet");
+var message=document.getElementById("audio-message");
+if(snippet)snippet.addEventListener("error",function(){this.style.display="none";});
+if(message)message.addEventListener("error",function(){this.style.display="none";});
 }
 
 // ===== SAVE CARD AS IMAGE =====
