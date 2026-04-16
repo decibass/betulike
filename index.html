@@ -279,165 +279,173 @@
 </div>
 
 <script>
-// ===== CONFIG =====
-var API_URL = "COLE_SUA_URL_DO_APPS_SCRIPT_AQUI";
+var API_URL = "";
 
-// ===== COUNTDOWN =====
-function updateCD(){
-  var target=new Date(2026,4,2,0,0,0);var now=new Date();var diff=target-now;
-  var el=document.getElementById("countdown");var inv=document.getElementById("inv-text");
-  if(!el)return;
-  if(diff<=0){
-    inv.textContent="A ENTIDADE SE MATERIALIZOU";inv.style.color="#aa0000";inv.style.fontWeight="800";
-    el.innerHTML='';return;
-  }
-  var d=Math.floor(diff/864e5);var h=Math.floor((diff%864e5)/36e5);
-  var m=Math.floor((diff%36e5)/6e4);var s=Math.floor((diff%6e4)/1e3);
-  el.innerHTML='<div class="cd-b"><span class="cd-n">'+d+'</span><span class="cd-u">dias</span></div><div class="cd-b"><span class="cd-n">'+String(h).padStart(2,"0")+'</span><span class="cd-u">hrs</span></div><div class="cd-b"><span class="cd-n">'+String(m).padStart(2,"0")+'</span><span class="cd-u">min</span></div><div class="cd-b"><span class="cd-n">'+String(s).padStart(2,"0")+'</span><span class="cd-u">seg</span></div>';
+function updateCD() {
+var target = new Date(2026, 4, 2, 0, 0, 0);
+var now = new Date();
+var diff = target - now;
+var el = document.getElementById("countdown");
+var inv = document.getElementById("inv-text");
+if (!el) return;
+if (diff <= 0) {
+  inv.textContent = "A ENTIDADE SE MATERIALIZOU";
+  inv.style.color = "#aa0000";
+  inv.style.fontWeight = "800";
+  el.innerHTML = "";
+  return;
 }
-updateCD();setInterval(updateCD,1000);
+var d = Math.floor(diff / 86400000);
+var h = Math.floor((diff % 86400000) / 3600000);
+var m = Math.floor((diff % 3600000) / 60000);
+var s = Math.floor((diff % 60000) / 1000);
+el.innerHTML = '<div class="cd-b"><span class="cd-n">' + d + '</span><span class="cd-u">dias</span></div>' +
+  '<div class="cd-b"><span class="cd-n">' + String(h).padStart(2, "0") + '</span><span class="cd-u">hrs</span></div>' +
+  '<div class="cd-b"><span class="cd-n">' + String(m).padStart(2, "0") + '</span><span class="cd-u">min</span></div>' +
+  '<div class="cd-b"><span class="cd-n">' + String(s).padStart(2, "0") + '</span><span class="cd-u">seg</span></div>';
+}
 
-// ===== FORM =====
-function submitForm(){
-var name=document.getElementById("input-name").value.trim();
-var email=document.getElementById("input-email").value.trim();
-var msg=document.getElementById("form-msg");
-var btn=document.getElementById("form-submit");
+updateCD();
+setInterval(updateCD, 1000);
 
-if(!name){msg.textContent="Digite seu nome.";msg.style.color="#aa0000";return;}
-if(!email||email.indexOf("@")<0){msg.textContent="Digite um e-mail válido.";msg.style.color="#aa0000";return;}
+function submitForm() {
+var name = document.getElementById("input-name").value.trim();
+var email = document.getElementById("input-email").value.trim();
+var msg = document.getElementById("form-msg");
+var btn = document.getElementById("form-submit");
 
-btn.disabled=true;
-btn.textContent="INVOCANDO...";
-msg.textContent="";
+if (!name) {
+  msg.textContent = "Digite seu nome.";
+  msg.style.color = "#aa0000";
+  return;
+}
+if (!email || email.indexOf("@") < 0) {
+  msg.textContent = "Digite um e-mail valido.";
+  msg.style.color = "#aa0000";
+  return;
+}
 
-var numero=Math.floor(Math.random()*9000)+1000;
+btn.disabled = true;
+btn.textContent = "INVOCANDO...";
+msg.textContent = "";
 
-// Tenta salvar no Apps Script se configurado
-if(API_URL && API_URL.indexOf("script.google.com")>=0){
-  var url=API_URL+"?action=saveEmail&nome="+encodeURIComponent(name)+"&email="+encodeURIComponent(email);
-  fetch(url,{method:"GET",redirect:"follow"}).then(function(r){return r.text();}).then(function(t){
-    try{var data=JSON.parse(t);if(data.numero)numero=data.numero;}catch(e){}
-    showReward(name,numero);
-  }).catch(function(){
-    showReward(name,numero);
-  });
+var numero = Math.floor(Math.random() * 9000) + 1000;
+
+if (API_URL && API_URL.indexOf("script.google.com") >= 0) {
+  var url = API_URL + "?action=saveEmail&nome=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email);
+  fetch(url, {method: "GET", redirect: "follow"})
+    .then(function(r) { return r.text(); })
+    .then(function(t) {
+      try {
+        var data = JSON.parse(t);
+        if (data.numero) numero = data.numero;
+      } catch(e) {}
+      showReward(name, numero);
+    })
+    .catch(function() {
+      showReward(name, numero);
+    });
 } else {
-  // Sem API: funciona localmente mesmo assim
-  setTimeout(function(){
-    showReward(name,numero);
-  },1500);
+  setTimeout(function() {
+    showReward(name, numero);
+  }, 1500);
 }
 }
 
-function showReward(name,numero){
-document.getElementById("form-section").style.display="none";
-var reward=document.getElementById("reward-section");
+function showReward(name, numero) {
+document.getElementById("form-section").style.display = "none";
+var reward = document.getElementById("reward-section");
 reward.classList.add("show");
-document.getElementById("card-name-display").textContent=name.toUpperCase();
-document.getElementById("card-number-display").textContent="Nº "+numero;
-
-// Esconder players se áudio não existir
-var snippet=document.getElementById("audio-snippet");
-var message=document.getElementById("audio-message");
-if(snippet)snippet.addEventListener("error",function(){this.style.display="none";});
-if(message)message.addEventListener("error",function(){this.style.display="none";});
+document.getElementById("card-name-display").textContent = name.toUpperCase();
+document.getElementById("card-number-display").textContent = "No " + numero;
 }
 
-// ===== SAVE CARD AS IMAGE =====
-function saveCard(){
-  var canvas=document.createElement("canvas");
-  var w=1080;var h=1920;
-  canvas.width=w;canvas.height=h;
-  var ctx=canvas.getContext("2d");
+function saveCard() {
+var canvas = document.createElement("canvas");
+var w = 1080;
+var h = 1920;
+canvas.width = w;
+canvas.height = h;
+var ctx = canvas.getContext("2d");
 
-  // Background
-  ctx.fillStyle="#0a0a0a";
-  ctx.fillRect(0,0,w,h);
+ctx.fillStyle = "#0a0a0a";
+ctx.fillRect(0, 0, w, h);
 
-  // Veins
-  ctx.strokeStyle="rgba(170,0,0,0.15)";
-  ctx.lineWidth=2;
-  var veins=[[216,0,216,1920,15],[486,0,486,1920,-8],[756,0,756,1920,22],[378,0,378,1920,-18],[864,0,864,1920,10],[594,0,594,1920,-25],[162,0,162,1920,30],[972,0,972,1920,-12]];
-  for(var v=0;v<veins.length;v++){
-    ctx.save();
-    ctx.translate(veins[v][0],veins[v][1]);
-    ctx.rotate(veins[v][4]*Math.PI/180);
-    ctx.beginPath();
-    ctx.moveTo(0,-200);
-    ctx.lineTo(0,h+200);
-    ctx.stroke();
-    ctx.restore();
-  }
+ctx.strokeStyle = "rgba(170,0,0,0.15)";
+ctx.lineWidth = 2;
+var angles = [15, -8, 22, -18, 10, -25, 30, -12];
+var xpos = [216, 486, 756, 378, 864, 594, 162, 972];
+for (var v = 0; v < angles.length; v++) {
+  ctx.save();
+  ctx.translate(xpos[v], h / 2);
+  ctx.rotate(angles[v] * Math.PI / 180);
+  ctx.beginPath();
+  ctx.moveTo(0, -h);
+  ctx.lineTo(0, h);
+  ctx.stroke();
+  ctx.restore();
+}
 
-  // Branch veins
-  ctx.strokeStyle="rgba(170,0,0,0.08)";
-  ctx.lineWidth=1;
-  var branches=[[240,576,45],[520,768,−35],[780,384,55],[400,960,−60]];
-  for(var b=0;b<branches.length;b++){
-    ctx.save();
-    ctx.translate(branches[b][0],branches[b][1]);
-    ctx.rotate(branches[b][2]*Math.PI/180);
-    ctx.beginPath();
-    ctx.moveTo(0,0);
-    ctx.lineTo(0,400);
-    ctx.stroke();
-    ctx.restore();
-  }
+ctx.strokeStyle = "rgba(170,0,0,0.08)";
+ctx.lineWidth = 1;
+var bx = [240, 520, 780, 400];
+var by = [576, 768, 384, 960];
+var ba = [45, -35, 55, -60];
+for (var b = 0; b < bx.length; b++) {
+  ctx.save();
+  ctx.translate(bx[b], by[b]);
+  ctx.rotate(ba[b] * Math.PI / 180);
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(0, 400);
+  ctx.stroke();
+  ctx.restore();
+}
 
-  // Text
-  ctx.textAlign="center";
+ctx.textAlign = "center";
 
-  // Logo top
-  ctx.fillStyle="#484848";
-  ctx.font="700 24px Inter, sans-serif";
-  ctx.letterSpacing="8px";
-  ctx.fillText("CHRISLOPS",w/2,180);
+ctx.fillStyle = "#484848";
+ctx.font = "700 24px Inter, sans-serif";
+ctx.fillText("CHRISLOPS", w / 2, 180);
 
-  // "CHRISLOPS RECONHECE"
-  ctx.fillStyle="#484848";
-  ctx.font="600 28px Inter, sans-serif";
-  ctx.fillText("CHRISLOPS RECONHECE",w/2,680);
+ctx.fillStyle = "#484848";
+ctx.font = "600 28px Inter, sans-serif";
+ctx.fillText("CHRISLOPS RECONHECE", w / 2, 680);
 
-  // Name
-  var name=document.getElementById("card-name-display").textContent;
-  ctx.fillStyle="#f2f2f2";
-  ctx.font="900 64px Inter, sans-serif";
-  // Word wrap for long names
-  if(name.length>15){ctx.font="900 48px Inter, sans-serif";}
-  if(name.length>25){ctx.font="900 36px Inter, sans-serif";}
-  ctx.fillText(name,w/2,780);
+var name = document.getElementById("card-name-display").textContent;
+ctx.fillStyle = "#f2f2f2";
+if (name.length > 25) {
+  ctx.font = "900 36px Inter, sans-serif";
+} else if (name.length > 15) {
+  ctx.font = "900 48px Inter, sans-serif";
+} else {
+  ctx.font = "900 64px Inter, sans-serif";
+}
+ctx.fillText(name, w / 2, 780);
 
-  // "como parte do ritual."
-  ctx.fillStyle="#484848";
-  ctx.font="400 26px Inter, sans-serif";
-  ctx.fillText("como parte do ritual.",w/2,850);
+ctx.fillStyle = "#484848";
+ctx.font = "400 26px Inter, sans-serif";
+ctx.fillText("como parte do ritual.", w / 2, 850);
+ctx.fillText("Invocacao aceita.", w / 2, 960);
+ctx.fillText("Purificacao concluida.", w / 2, 1000);
 
-  // Lines
-  ctx.fillText("Invocação aceita.",w/2,960);
-  ctx.fillText("Purificação concluída.",w/2,1000);
+ctx.fillStyle = "#aa0000";
+ctx.font = "700 26px Inter, sans-serif";
+ctx.fillText("Transcendencia em 02.05.2026 as 00h.", w / 2, 1080);
 
-  // Highlight line
-  ctx.fillStyle="#aa0000";
-  ctx.font="700 26px Inter, sans-serif";
-  ctx.fillText("Transcendência em 02.05.2026 às 00h.",w/2,1080);
+var num = document.getElementById("card-number-display").textContent;
+ctx.fillStyle = "#aa0000";
+ctx.font = "800 32px Inter, sans-serif";
+ctx.fillText(num, w / 2, 1220);
 
-  // Number
-  var num=document.getElementById("card-number-display").textContent;
-  ctx.fillStyle="#aa0000";
-  ctx.font="800 32px Inter, sans-serif";
-  ctx.fillText(num,w/2,1220);
+ctx.fillStyle = "#484848";
+ctx.font = "400 22px Inter, sans-serif";
+ctx.fillText("BET U LIKE . CHRISLOPS", w / 2, 1720);
 
-  // Footer
-  ctx.fillStyle="#484848";
-  ctx.font="400 22px Inter, sans-serif";
-  ctx.fillText("BET U LIKE · CHRISLOPS",w/2,1720);
-
-  // Download
-  var link=document.createElement("a");
-  link.download="bet-u-like-ritual-"+name.toLowerCase().replace(/[^a-z0-9]/g,"-")+".png";
-  link.href=canvas.toDataURL("image/png");
-  link.click();
+var link = document.createElement("a");
+link.download = "bet-u-like-ritual-" + name.toLowerCase().replace(/[^a-z0-9]/g, "-") + ".png";
+link.href = canvas.toDataURL("image/png");
+link.click();
 }
 </script>
 
