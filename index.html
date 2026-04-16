@@ -1,453 +1,748 @@
 <html lang="pt-BR"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BET U LIKE — CHRISLOPS</title>
-  <meta name="description" content="BET U LIKE — CHRISLOPS. Complete o ritual.">
-  <meta name="theme-color" content="#0a0a0a">
-  <meta property="og:title" content="BET U LIKE — CHRISLOPS">
-  <meta property="og:description" content="Complete o ritual. Faça o pre-save.">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
-    :root{--red:#aa0000;--rg:rgba(170,0,0,0.4);--rs:rgba(170,0,0,0.12);--bg:#0a0a0a;--t1:#f2f2f2;--t2:#a8a8a8;--t3:#484848;}
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);min-height:100vh;overflow-x:hidden;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BET U LIKE - CHRISLOPS</title>
+<meta name="theme-color" content="#050505">
+<meta name="description" content="O ritual se completa quando voce faz parte.">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Libre Baskerville',Georgia,'Times New Roman',serif;
+  background:#050505;
+  color:#d4d4d4;
+  min-height:100vh;
+  overflow-x:hidden;
+}
 
-    .atmo{position:fixed;inset:0;z-index:0;pointer-events:none;}
-    .atmo::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,var(--rg) 0%,transparent 70%);opacity:.15;animation:breathe 4s ease-in-out infinite;}
-    @keyframes breathe{0%,100%{opacity:.1;transform:translate(-50%,-50%) scale(1)}50%{opacity:.2;transform:translate(-50%,-50%) scale(1.1)}}
+::selection{background:rgba(170,0,0,0.4);color:#fff;}
 
-    .page{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:40px 24px;max-width:480px;margin:0 auto;}
-    .artist{font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--t3);margin-bottom:32px;margin-top:20px;}
+/* Grain overlay */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  pointer-events:none;
+  opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-    /* CTA */
-    .cta-main{font-size:15px;font-weight:700;color:var(--t1);letter-spacing:1px;margin-bottom:6px;}
-    .cta-sub{font-size:11px;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-bottom:32px;}
+/* Atmosphere */
+.atmo{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.atmo-glow{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(120,0,0,0.25) 0%,transparent 65%);
+  animation:pulse 6s ease-in-out infinite;
+}
+.atmo-glow2{
+  position:absolute;
+  top:30%;left:50%;
+  transform:translate(-50%,-50%);
+  width:800px;height:400px;
+  background:radial-gradient(ellipse,rgba(80,0,0,0.08) 0%,transparent 70%);
+}
+@keyframes pulse{
+  0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1);}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.08);}
+}
 
-    /* RITUAL CIRCLE */
-    .ritual{position:relative;width:320px;height:320px;margin-bottom:40px;}
-    .ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:260px;height:260px;border-radius:50%;border:1px solid rgba(170,0,0,.25);animation:ringP 4s ease-in-out infinite;}
-    .ring::before{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(170,0,0,.1);transform:scale(1.15);}
-    .ring::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(170,0,0,.05);transform:scale(1.3);}
-    @keyframes ringP{0%,100%{border-color:rgba(170,0,0,.2);box-shadow:0 0 30px rgba(170,0,0,.05)}50%{border-color:rgba(170,0,0,.4);box-shadow:0 0 60px rgba(170,0,0,.1)}}
-    .penta{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:260px;height:260px;}
-    .penta svg{width:100%;height:100%;opacity:.15;}
-    .center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:2;}
-    .center .logo{font-size:26px;font-weight:900;color:var(--red);letter-spacing:3px;text-shadow:0 0 40px var(--rg);animation:lp 4s ease-in-out infinite;}
-    @keyframes lp{0%,100%{text-shadow:0 0 30px rgba(170,0,0,.3)}50%{text-shadow:0 0 60px rgba(170,0,0,.5)}}
+/* Floating particles */
+.particles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.particle{
+  position:absolute;
+  width:1px;height:1px;
+  background:#aa0000;
+  border-radius:50%;
+  opacity:0;
+  animation:float linear infinite;
+}
+@keyframes float{
+  0%{opacity:0;transform:translateY(100vh) scale(1);}
+  10%{opacity:.6;}
+  90%{opacity:.6;}
+  100%{opacity:0;transform:translateY(-10vh) scale(0);}
+}
 
-    .pp{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;z-index:3;transition:all .3s;}
-    .pp:hover{transform:scale(1.1);}
-    .pp:hover .pp-circle{border-color:var(--red);background:var(--rs);box-shadow:0 0 24px var(--rg);}
-    .pp:hover .pp-name{color:var(--red);}
-    .pp-circle{width:52px;height:52px;border-radius:50%;background:#191919;border:1px solid #2a2a2a;display:flex;align-items:center;justify-content:center;font-size:20px;transition:all .3s;}
-    .pp-name{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--t2);transition:color .3s;white-space:nowrap;}
+.page{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:60px 24px 40px;
+  max-width:460px;
+  margin:0 auto;
+}
 
-    .pt{top:0;left:50%;transform:translateX(-50%);}
-    .pr{top:50%;right:0;transform:translateY(-50%);}
-    .pb{bottom:0;left:50%;transform:translateX(-50%);}
-    .pl{top:50%;left:0;transform:translateY(-50%);}
-    .pt:hover{transform:translateX(-50%) scale(1.1);}
-    .pr:hover{transform:translateY(-50%) scale(1.1);}
-    .pb:hover{transform:translateX(-50%) scale(1.1);}
-    .pl:hover{transform:translateY(-50%) scale(1.1);}
+/* Logo area */
+.logo-area{margin-bottom:48px;text-align:center;}
+.logo-artist{
+  font-size:10px;
+  font-weight:400;
+  letter-spacing:6px;
+  text-transform:uppercase;
+  color:#555;
+  margin-bottom:16px;
+}
+.logo-single{
+  font-size:36px;
+  font-weight:700;
+  color:#aa0000;
+  letter-spacing:4px;
+  text-shadow:0 0 60px rgba(170,0,0,0.3),0 0 120px rgba(170,0,0,0.1);
+  animation:logoBreath 5s ease-in-out infinite;
+}
+@keyframes logoBreath{
+  0%,100%{text-shadow:0 0 40px rgba(170,0,0,.2),0 0 80px rgba(170,0,0,.05);}
+  50%{text-shadow:0 0 80px rgba(170,0,0,.4),0 0 160px rgba(170,0,0,.15);}
+}
 
-    /* INVOCATION */
-    .inv{font-size:12px;color:var(--t3);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
-    .countdown{display:flex;gap:6px;justify-content:center;margin-bottom:32px;}
-    .cd-b{background:rgba(170,0,0,.08);border:1px solid rgba(170,0,0,.2);border-radius:8px;padding:8px 12px;min-width:52px;text-align:center;}
-    .cd-n{font-size:20px;font-weight:800;color:var(--red);display:block;}
-    .cd-u{font-size:8px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;}
-    .phrase{font-size:13px;color:var(--t3);font-style:italic;margin-bottom:40px;}
-    .sep{width:40px;height:1px;background:var(--red);margin:0 auto 40px;opacity:.4;}
+/* Divider line */
+.line{width:60px;height:1px;background:rgba(170,0,0,.3);margin:0 auto;}
 
-    /* FORM */
-    .form-section{width:100%;max-width:380px;margin-bottom:40px;}
-    .form-title{font-size:14px;font-weight:700;text-align:center;margin-bottom:4px;}
-    .form-sub{font-size:11px;color:var(--t3);text-align:center;margin-bottom:20px;}
-    .form-input{width:100%;padding:12px 16px;background:#191919;border:1px solid #2a2a2a;border-radius:10px;color:var(--t1);font-size:13px;font-family:inherit;outline:none;margin-bottom:10px;transition:border .2s;}
-    .form-input:focus{border-color:var(--red);}
-    .form-input::placeholder{color:var(--t3);}
-    .form-btn{width:100%;padding:14px;background:var(--red);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;letter-spacing:1px;transition:all .2s;}
-    .form-btn:hover{background:#cc1a1a;transform:translateY(-1px);}
-    .form-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
-    .form-msg{font-size:11px;color:var(--t3);text-align:center;margin-top:8px;}
+/* CTA */
+.cta{text-align:center;margin:40px 0;}
+.cta-main{font-size:16px;font-weight:700;color:#e0e0e0;letter-spacing:1px;margin-bottom:8px;}
+.cta-sub{font-size:11px;font-weight:400;font-style:italic;color:#666;letter-spacing:2px;}
 
-    /* REWARD (hidden by default) */
-    .reward{display:none;width:100%;max-width:380px;margin-bottom:40px;animation:fadeIn .6s ease;}
-    .reward.show{display:block;}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+/* Ritual circle */
+.ritual{position:relative;width:300px;height:300px;margin:0 auto 48px;}
 
-    .reward-title{font-size:16px;font-weight:800;color:var(--red);text-align:center;margin-bottom:24px;letter-spacing:1px;}
+.ring{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:240px;height:240px;
+  border-radius:50%;
+  border:1px solid rgba(170,0,0,.2);
+  animation:ringPulse 5s ease-in-out infinite;
+}
+.ring::before{
+  content:"";position:absolute;inset:-1px;border-radius:50%;
+  border:1px solid rgba(170,0,0,.08);transform:scale(1.18);
+}
+.ring::after{
+  content:"";position:absolute;inset:-1px;border-radius:50%;
+  border:1px solid rgba(170,0,0,.04);transform:scale(1.36);
+}
+@keyframes ringPulse{
+  0%,100%{border-color:rgba(170,0,0,.15);box-shadow:0 0 40px rgba(170,0,0,.03);}
+  50%{border-color:rgba(170,0,0,.35);box-shadow:0 0 80px rgba(170,0,0,.08);}
+}
 
-    .reward-card{background:#191919;border:1px solid #2a2a2a;border-radius:14px;padding:20px;margin-bottom:14px;}
-    .reward-card .rc-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--t3);margin-bottom:8px;}
-    .reward-card .rc-content{font-size:13px;color:var(--t2);line-height:1.6;}
+.penta{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:240px;height:240px;}
+.penta svg{width:100%;height:100%;opacity:.12;}
 
-    .audio-player{width:100%;height:48px;border-radius:8px;margin-top:8px;}
+.center-mark{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:8px;height:8px;border-radius:50%;
+  background:#aa0000;
+  box-shadow:0 0 20px rgba(170,0,0,.6),0 0 40px rgba(170,0,0,.3);
+  z-index:2;
+}
 
-    .btn-secondary{display:block;width:100%;padding:12px;background:#191919;border:1px solid #2a2a2a;border-radius:10px;color:var(--t2);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;text-align:center;text-decoration:none;transition:all .2s;margin-top:10px;}
-    .btn-secondary:hover{border-color:var(--red);color:var(--t1);}
+/* Platform points */
+.pp{
+  position:absolute;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  text-decoration:none;z-index:3;
+  transition:all .4s ease;
+}
+.pp:hover .pp-dot{
+  background:#aa0000;
+  box-shadow:0 0 20px rgba(170,0,0,.8),0 0 40px rgba(170,0,0,.4);
+  transform:scale(1.3);
+}
+.pp:hover .pp-name{color:#aa0000;}
 
-    /* COLLECTIBLE CARD */
-    .card-preview{width:100%;max-width:270px;margin:0 auto;aspect-ratio:9/16;border-radius:12px;overflow:hidden;position:relative;border:1px solid #2a2a2a;}
+.pp-dot{
+  width:12px;height:12px;border-radius:50%;
+  background:#333;
+  border:1px solid #555;
+  transition:all .4s ease;
+}
+.pp-name{
+  font-family:'Libre Baskerville',serif;
+  font-size:9px;font-weight:400;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:#555;transition:color .4s;white-space:nowrap;
+}
 
-    .card-canvas{width:100%;height:100%;position:relative;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;}
+.pt{top:-8px;left:50%;transform:translateX(-50%);}
+.pr{top:50%;right:-16px;transform:translateY(-50%);}
+.pb{bottom:-8px;left:50%;transform:translateX(-50%);}
+.pl{top:50%;left:-16px;transform:translateY(-50%);}
+.pt:hover{transform:translateX(-50%) translateY(-4px);}
+.pr:hover{transform:translateY(-50%) translateX(4px);}
+.pb:hover{transform:translateX(-50%) translateY(4px);}
+.pl:hover{transform:translateY(-50%) translateX(-4px);}
 
-    /* Veins effect CSS */
-    .veins-bg{position:absolute;inset:0;overflow:hidden;}
-    .vein{position:absolute;background:var(--red);opacity:.15;border-radius:2px;}
-    .v1{width:1px;height:120%;top:-10%;left:20%;transform:rotate(15deg);}
-    .v2{width:1px;height:110%;top:-5%;left:45%;transform:rotate(-8deg);}
-    .v3{width:1px;height:130%;top:-15%;left:70%;transform:rotate(22deg);}
-    .v4{width:2px;height:100%;top:0;left:35%;transform:rotate(-18deg);opacity:.08;}
-    .v5{width:1px;height:90%;top:5%;left:80%;transform:rotate(10deg);opacity:.12;}
-    .v6{width:1px;height:100%;top:0;left:55%;transform:rotate(-25deg);opacity:.1;}
-    .v7{width:2px;height:110%;top:-5%;left:15%;transform:rotate(30deg);opacity:.06;}
-    .v8{width:1px;height:120%;top:-10%;left:90%;transform:rotate(-12deg);opacity:.1;}
-    .v9{width:1px;height:80%;top:10%;right:25%;transform:rotate(20deg);opacity:.12;}
-    .v10{width:2px;height:100%;top:0;left:60%;transform:rotate(-5deg);opacity:.05;}
-    /* Branch veins */
-    .vb1{width:1px;height:40%;top:30%;left:22%;transform:rotate(45deg);opacity:.1;}
-    .vb2{width:1px;height:35%;top:40%;left:48%;transform:rotate(-35deg);opacity:.08;}
-    .vb3{width:1px;height:30%;top:20%;left:72%;transform:rotate(55deg);opacity:.1;}
-    .vb4{width:1px;height:25%;top:50%;left:37%;transform:rotate(-60deg);opacity:.07;}
+/* Countdown */
+.inv{
+  font-size:11px;font-weight:400;font-style:italic;
+  color:#555;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:16px;text-align:center;
+}
+.countdown{display:flex;gap:4px;justify-content:center;margin-bottom:40px;}
+.cd-b{
+  background:rgba(170,0,0,.05);
+  border:1px solid rgba(170,0,0,.12);
+  border-radius:4px;
+  padding:10px 14px;min-width:54px;text-align:center;
+}
+.cd-n{font-size:18px;font-weight:700;color:#aa0000;display:block;font-family:'Libre Baskerville',serif;}
+.cd-u{font-size:7px;color:#444;text-transform:uppercase;letter-spacing:2px;}
 
-    .card-canvas .card-logo{font-size:9px;font-weight:700;letter-spacing:4px;color:var(--t3);margin-bottom:auto;padding-top:20px;z-index:1;}
-    .card-canvas .card-recognizes{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--t3);z-index:1;margin-bottom:8px;}
-    .card-canvas .card-name{font-size:22px;font-weight:900;color:var(--t1);z-index:1;margin-bottom:16px;line-height:1.2;}
-    .card-canvas .card-text{font-size:10px;color:var(--t3);z-index:1;margin-bottom:6px;letter-spacing:.5px;}
-    .card-canvas .card-text.highlight{color:var(--red);font-weight:700;letter-spacing:1px;}
-    .card-canvas .card-number{font-size:11px;font-weight:800;color:var(--red);z-index:1;margin-top:16px;margin-bottom:auto;letter-spacing:2px;}
-    .card-canvas .card-footer{font-size:8px;letter-spacing:2px;color:var(--t3);z-index:1;padding-bottom:20px;}
+/* Quote */
+.quote{
+  font-size:14px;font-style:italic;font-weight:400;
+  color:#444;margin-bottom:48px;text-align:center;
+  letter-spacing:.5px;
+}
 
-    .save-card-btn{display:block;width:100%;max-width:270px;margin:12px auto 0;padding:10px;background:var(--red);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s;}
-    .save-card-btn:hover{background:#cc1a1a;}
+/* Form */
+.form-section{width:100%;margin-bottom:48px;}
+.form-title{font-size:14px;font-weight:700;text-align:center;color:#d4d4d4;margin-bottom:4px;}
+.form-sub{font-size:11px;font-weight:400;font-style:italic;color:#555;text-align:center;margin-bottom:24px;}
+.form-input{
+  width:100%;padding:14px 18px;
+  background:#0a0a0a;
+  border:1px solid #1a1a1a;
+  border-radius:2px;
+  color:#d4d4d4;font-size:13px;font-family:'Libre Baskerville',serif;
+  outline:none;margin-bottom:12px;
+  transition:border .3s;
+}
+.form-input:focus{border-color:rgba(170,0,0,.5);}
+.form-input::placeholder{color:#333;font-style:italic;}
+.form-btn{
+  width:100%;padding:16px;
+  background:transparent;
+  border:1px solid rgba(170,0,0,.4);
+  color:#aa0000;font-size:12px;font-weight:700;
+  font-family:'Libre Baskerville',serif;
+  letter-spacing:3px;text-transform:uppercase;
+  cursor:pointer;transition:all .3s;
+  border-radius:2px;
+}
+.form-btn:hover{
+  background:rgba(170,0,0,.08);
+  border-color:rgba(170,0,0,.7);
+  box-shadow:0 0 30px rgba(170,0,0,.1);
+}
+.form-btn:disabled{opacity:.4;cursor:not-allowed;}
+.form-msg{font-size:11px;color:#555;text-align:center;margin-top:10px;}
 
-    /* EVENT */
-    .event{width:100%;max-width:380px;background:rgba(25,25,25,.8);border:1px solid #2a2a2a;border-radius:16px;padding:24px;text-align:left;margin-bottom:32px;}
-    .event .ev-l{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
-    .event .ev-n{font-size:18px;font-weight:800;margin-bottom:14px;}
-    .event .ev-i{font-size:12px;color:var(--t2);line-height:1.9;}
-    .event .ev-i strong{color:var(--t1);}
-    .event .ev-b{display:inline-block;background:rgba(34,197,94,.12);color:#22c55e;font-size:9px;font-weight:700;padding:4px 12px;border-radius:12px;margin-top:12px;}
+/* Reward */
+.reward{display:none;width:100%;margin-bottom:48px;}
+.reward.show{display:block;animation:revealFade .8s ease;}
+@keyframes revealFade{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 
-    .social{display:flex;gap:16px;justify-content:center;margin-bottom:24px;}
-    .social a{color:var(--t3);text-decoration:none;font-size:12px;font-weight:600;transition:color .2s;}
-    .social a:hover{color:var(--t1);}
-    .footer{font-size:10px;color:var(--t3);text-align:center;line-height:1.8;padding-bottom:40px;}
-    .footer a{color:var(--t3);text-decoration:none;}
-    .footer a:hover{color:var(--t2);}
+.reward-title{
+  font-size:15px;font-weight:700;font-style:italic;
+  color:#aa0000;text-align:center;
+  margin-bottom:32px;letter-spacing:1px;
+}
 
-    @media(max-width:480px){
-      .ritual{width:280px;height:280px;}
-      .ring{width:220px;height:220px;}
-      .penta{width:220px;height:220px;}
-      .pp-circle{width:44px;height:44px;font-size:17px;}
-      .pp-name{font-size:7px;}
-      .center .logo{font-size:20px;}
-      .card-preview{max-width:220px;}
-    }
-  </style>
+.rcard{
+  background:#0a0a0a;
+  border:1px solid #1a1a1a;
+  border-radius:2px;
+  padding:24px;margin-bottom:16px;
+  transition:border-color .3s;
+}
+.rcard:hover{border-color:rgba(170,0,0,.2);}
+.rcard .rc-l{
+  font-size:9px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  color:#444;margin-bottom:10px;
+}
+.rcard .rc-c{font-size:13px;color:#666;line-height:1.7;font-style:italic;}
+
+.btn-sec{
+  display:block;width:100%;padding:14px;
+  background:transparent;
+  border:1px solid #1a1a1a;
+  border-radius:2px;
+  color:#555;font-size:11px;font-weight:700;
+  font-family:'Libre Baskerville',serif;
+  letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;text-align:center;text-decoration:none;
+  transition:all .3s;margin-top:12px;
+}
+.btn-sec:hover{border-color:rgba(170,0,0,.4);color:#aa0000;}
+
+.placeholder-note{font-size:10px;color:#333;margin-top:10px;font-style:italic;text-align:center;}
+
+/* Collectible card */
+.card-outer{width:100%;max-width:250px;margin:0 auto;}
+.card-preview{
+  width:100%;aspect-ratio:9/16;
+  border-radius:2px;overflow:hidden;
+  position:relative;
+  border:1px solid #1a1a1a;
+}
+.card-canvas{
+  width:100%;height:100%;position:relative;
+  background:#050505;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:20px;text-align:center;
+}
+
+/* Veins - more elaborate */
+.veins{position:absolute;inset:0;overflow:hidden;}
+.vn{position:absolute;background:#aa0000;border-radius:1px;}
+.vn-main{width:1px;opacity:.12;}
+.vn-branch{width:1px;opacity:.07;}
+.vn-thick{width:2px;opacity:.06;}
+.vm1{height:130%;top:-15%;left:15%;transform:rotate(12deg);}
+.vm2{height:120%;top:-10%;left:35%;transform:rotate(-6deg);}
+.vm3{height:140%;top:-20%;left:55%;transform:rotate(18deg);}
+.vm4{height:110%;top:-5%;left:75%;transform:rotate(-14deg);}
+.vm5{height:125%;top:-12%;left:90%;transform:rotate(8deg);}
+.vt1{height:100%;top:0;left:25%;transform:rotate(-20deg);}
+.vt2{height:110%;top:-5%;left:65%;transform:rotate(24deg);}
+.vb1{height:45%;top:25%;left:18%;transform:rotate(50deg);}
+.vb2{height:35%;top:45%;left:42%;transform:rotate(-40deg);}
+.vb3{height:40%;top:15%;left:68%;transform:rotate(60deg);}
+.vb4{height:30%;top:55%;left:82%;transform:rotate(-50deg);}
+.vb5{height:25%;top:35%;left:30%;transform:rotate(35deg);}
+.vb6{height:35%;top:60%;left:50%;transform:rotate(-30deg);}
+
+/* Card text */
+.card-canvas .ct-logo{
+  font-family:'Libre Baskerville',serif;
+  font-size:7px;font-weight:700;letter-spacing:5px;
+  text-transform:uppercase;color:#333;
+  margin-bottom:auto;padding-top:24px;z-index:1;
+}
+.card-canvas .ct-rec{
+  font-family:'Libre Baskerville',serif;
+  font-size:8px;font-weight:400;letter-spacing:3px;
+  text-transform:uppercase;color:#555;
+  z-index:1;margin-bottom:6px;
+}
+.card-canvas .ct-name{
+  font-family:'Libre Baskerville',serif;
+  font-size:18px;font-weight:700;color:#e0e0e0;
+  z-index:1;margin-bottom:20px;line-height:1.3;
+}
+.card-canvas .ct-line{
+  font-family:'Libre Baskerville',serif;
+  font-size:8px;color:#444;z-index:1;
+  margin-bottom:4px;letter-spacing:1px;
+  font-style:italic;
+}
+.card-canvas .ct-hl{
+  color:#aa0000;font-style:italic;font-weight:700;
+}
+.card-canvas .ct-num{
+  font-family:'Libre Baskerville',serif;
+  font-size:10px;font-weight:700;color:#aa0000;
+  z-index:1;margin-top:20px;margin-bottom:auto;
+  letter-spacing:3px;
+}
+.card-canvas .ct-foot{
+  font-family:'Libre Baskerville',serif;
+  font-size:7px;letter-spacing:3px;
+  text-transform:uppercase;color:#333;
+  z-index:1;padding-bottom:24px;
+}
+
+.save-btn{
+  display:block;width:100%;margin-top:14px;padding:12px;
+  background:transparent;
+  border:1px solid rgba(170,0,0,.3);
+  border-radius:2px;
+  color:#aa0000;font-size:10px;font-weight:700;
+  font-family:'Libre Baskerville',serif;
+  letter-spacing:3px;text-transform:uppercase;
+  cursor:pointer;transition:all .3s;
+}
+.save-btn:hover{background:rgba(170,0,0,.06);border-color:rgba(170,0,0,.6);}
+
+/* Social */
+.social{
+  display:flex;gap:20px;justify-content:center;
+  margin:32px 0 24px;
+}
+.social a{
+  color:#333;text-decoration:none;
+  font-size:11px;font-weight:400;
+  letter-spacing:1px;transition:color .3s;
+}
+.social a:hover{color:#aa0000;}
+
+/* Footer */
+.foot{
+  font-size:9px;color:#222;text-align:center;
+  letter-spacing:2px;text-transform:uppercase;
+  padding-bottom:40px;
+}
+
+/* Mobile */
+@media(max-width:480px){
+  .page{padding:40px 20px 32px;}
+  .logo-single{font-size:28px;}
+  .ritual{width:260px;height:260px;}
+  .ring{width:200px;height:200px;}
+  .penta{width:200px;height:200px;}
+  .card-outer{max-width:210px;}
+  .ct-name{font-size:15px!important;}
+}
+</style>
 </head>
 <body>
 
-<div class="atmo"></div>
+<div class="atmo">
+<div class="atmo-glow"></div>
+<div class="atmo-glow2"></div>
+</div>
+
+<div class="particles" id="particles"></div>
 
 <div class="page">
 
-  <div class="artist">CHRISLOPS</div>
-  <div class="cta-main">Complete o ritual.</div>
-  <div class="cta-sub">Faça o pre-save</div>
+<!-- LOGO -->
+<div class="logo-area">
+<div class="logo-artist">Chrislops</div>
+<div class="logo-single">BET U LIKE</div>
+</div>
 
-  <!-- RITUAL CIRCLE -->
-  <div class="ritual">
-    <div class="ring"></div>
-    <div class="penta"><svg viewBox="0 0 260 260"><line x1="130" y1="0" x2="130" y2="260" stroke="#aa0000" stroke-width=".5"></line><line x1="0" y1="130" x2="260" y2="130" stroke="#aa0000" stroke-width=".5"></line><line x1="130" y1="0" x2="0" y2="130" stroke="#aa0000" stroke-width=".3"></line><line x1="130" y1="0" x2="260" y2="130" stroke="#aa0000" stroke-width=".3"></line><line x1="0" y1="130" x2="130" y2="260" stroke="#aa0000" stroke-width=".3"></line><line x1="260" y1="130" x2="130" y2="260" stroke="#aa0000" stroke-width=".3"></line><circle cx="130" cy="130" r="55" fill="none" stroke="#aa0000" stroke-width=".3"></circle></svg></div>
-    <div class="center"><div class="logo">BET U LIKE</div></div>
+<div class="line"></div>
 
-    <a href="#" target="_blank" class="pp pt" id="btn-spotify"><div class="pp-circle">🟢</div><div class="pp-name">Spotify</div></a>
-    <a href="#" target="_blank" class="pp pr" id="btn-apple"><div class="pp-circle">🍎</div><div class="pp-name">Apple Music</div></a>
-    <a href="#" target="_blank" class="pp pb" id="btn-deezer"><div class="pp-circle">💜</div><div class="pp-name">Deezer</div></a>
-    <a href="#" target="_blank" class="pp pl" id="btn-yt"><div class="pp-circle">▶️</div><div class="pp-name">YouTube Music</div></a>
-  </div>
+<!-- CTA -->
+<div class="cta">
+<div class="cta-main">Complete o ritual.</div>
+<div class="cta-sub">Faca o pre-save</div>
+</div>
 
-  <div class="inv" id="inv-text">A entidade se materializa em</div>
-  <div class="countdown" id="countdown"></div>
-  <div class="phrase">"I bet u will like."</div>
-  <div class="sep"></div>
+<!-- RITUAL CIRCLE -->
+<div class="ritual">
+<div class="ring"></div>
+<div class="penta">
+<svg viewBox="0 0 240 240">
+<line x1="120" y1="0" x2="120" y2="240" stroke="#aa0000" stroke-width=".4"></line>
+<line x1="0" y1="120" x2="240" y2="120" stroke="#aa0000" stroke-width=".4"></line>
+<line x1="120" y1="0" x2="0" y2="120" stroke="#aa0000" stroke-width=".25"></line>
+<line x1="120" y1="0" x2="240" y2="120" stroke="#aa0000" stroke-width=".25"></line>
+<line x1="0" y1="120" x2="120" y2="240" stroke="#aa0000" stroke-width=".25"></line>
+<line x1="240" y1="120" x2="120" y2="240" stroke="#aa0000" stroke-width=".25"></line>
+<circle cx="120" cy="120" r="50" fill="none" stroke="#aa0000" stroke-width=".2"></circle>
+<circle cx="120" cy="120" r="30" fill="none" stroke="#aa0000" stroke-width=".15"></circle>
+</svg>
+</div>
+<div class="center-mark"></div>
 
-  <!-- FORM -->
-  <div class="form-section" id="form-section">
-    <div class="form-title">Fez o pre-save?</div>
-    <div class="form-sub">Deixe seu nome e e-mail. Complete o ritual e receba conteúdo exclusivo.</div>
-    <input type="text" class="form-input" id="input-name" placeholder="Seu nome">
-    <input type="email" class="form-input" id="input-email" placeholder="Seu e-mail">
-    <button class="form-btn" id="form-submit" onclick="submitForm()">COMPLETAR O RITUAL</button>
-    <div class="form-msg" id="form-msg"></div>
-  </div>
+<a href="#" target="_blank" class="pp pt">
+<div class="pp-dot"></div>
+<div class="pp-name">Spotify</div>
+</a>
+<a href="#" target="_blank" class="pp pr">
+<div class="pp-dot"></div>
+<div class="pp-name">Apple Music</div>
+</a>
+<a href="#" target="_blank" class="pp pb">
+<div class="pp-dot"></div>
+<div class="pp-name">Deezer</div>
+</a>
+<a href="#" target="_blank" class="pp pl">
+<div class="pp-dot"></div>
+<div class="pp-name">YouTube Music</div>
+</a>
+</div>
 
-  <!-- REWARD (hidden) -->
-  <div class="reward" id="reward-section">
-    <div class="reward-title">🖤 CHRISLOPS reconhece você.</div>
+<!-- COUNTDOWN -->
+<div class="inv" id="inv-text">A entidade se materializa em</div>
+<div class="countdown" id="countdown"></div>
 
-    <!-- Snippet -->
-    <div class="reward-card">
-      <div class="rc-label">🎧 Trecho exclusivo</div>
-      <div class="rc-content">Ouça um trecho de BET U LIKE antes de todo mundo.</div>
-      <audio controls="" class="audio-player" id="audio-snippet">
-        <source src="snippet.mp3" type="audio/mpeg">
-      </audio>
-      <div style="font-size:10px;color:var(--t3);margin-top:6px;font-style:italic;" id="audio-placeholder">Áudio disponível em breve.</div>
-    </div>
+<div class="quote">"I bet u will like."</div>
 
-    <!-- Audio CHRISLOPS -->
-    <div class="reward-card">
-      <div class="rc-label">🎙️ Mensagem de CHRISLOPS</div>
-      <div class="rc-content">Uma mensagem exclusiva pra quem fez parte do ritual.</div>
-      <audio controls="" class="audio-player" id="audio-message">
-        <source src="mensagem.mp3" type="audio/mpeg">
-      </audio>
-      <div style="font-size:10px;color:var(--t3);margin-top:6px;font-style:italic;" id="msg-placeholder">Áudio disponível em breve.</div>
-    </div>
+<div class="line"></div>
 
-    <!-- Canal -->
-    <div class="reward-card">
-      <div class="rc-label">📱 Canal secreto</div>
-      <div class="rc-content">Entre no canal exclusivo de CHRISLOPS no Instagram. Tudo chega lá primeiro.</div>
-      <a href="#" class="btn-secondary" id="canal-link">Em breve — Canal exclusivo</a>
-    </div>
+<!-- FORM -->
+<div class="form-section" id="form-section">
+<div class="form-title">Fez o pre-save?</div>
+<div class="form-sub">Deixe seu nome e complete o ritual.</div>
+<input type="text" class="form-input" id="input-name" placeholder="Seu nome">
+<input type="email" class="form-input" id="input-email" placeholder="Seu e-mail">
+<button class="form-btn" id="form-submit" onclick="submitForm()">Completar o ritual</button>
+<div class="form-msg" id="form-msg"></div>
+</div>
 
-    <!-- Collectible Card -->
-    <div class="reward-card">
-      <div class="rc-label">🃏 Seu cartão ritual</div>
-      <div class="rc-content" style="margin-bottom:16px">Salve e compartilhe. Você faz parte.</div>
+<!-- REWARD -->
+<div class="reward" id="reward-section">
 
-      <div class="card-preview" id="card-preview">
-        <div class="card-canvas" id="card-canvas">
-          <div class="veins-bg">
-            <div class="vein v1"></div><div class="vein v2"></div><div class="vein v3"></div>
-            <div class="vein v4"></div><div class="vein v5"></div><div class="vein v6"></div>
-            <div class="vein v7"></div><div class="vein v8"></div><div class="vein v9"></div>
-            <div class="vein v10"></div>
-            <div class="vein vb1"></div><div class="vein vb2"></div><div class="vein vb3"></div><div class="vein vb4"></div>
-          </div>
-          <div class="card-logo">CHRISLOPS</div>
-          <div class="card-recognizes">CHRISLOPS RECONHECE</div>
-          <div class="card-name" id="card-name-display">—</div>
-          <div class="card-text">como parte do ritual.</div>
-          <div class="card-text" style="margin-top:12px">Invocação aceita.</div>
-          <div class="card-text">Purificação concluída.</div>
-          <div class="card-text highlight">Transcendência em 02.05.2026 às 00h.</div>
-          <div class="card-number" id="card-number-display">Nº 00</div>
-          <div class="card-footer">BET U LIKE · CHRISLOPS</div>
-        </div>
-      </div>
+<div class="reward-title">Chrislops reconhece voce.</div>
 
-      <button class="save-card-btn" onclick="saveCard()">SALVAR CARTÃO</button>
-    </div>
-  </div>
+<div class="rcard">
+<div class="rc-l">Fragmento do ritual</div>
+<div class="rc-c">Um trecho de BET U LIKE antes de todo mundo. Uma mensagem de Chrislops para voce.</div>
+<div class="placeholder-note">Disponivel em breve.</div>
+</div>
 
-  <div class="sep"></div>
+<div class="rcard">
+<div class="rc-l">Canal secreto</div>
+<div class="rc-c">O canal exclusivo de Chrislops no Instagram. Tudo chega la primeiro.</div>
+<a href="#" class="btn-sec">Em breve</a>
+</div>
 
-  <!-- EVENT -->
-  <div class="event">
-    <div class="ev-l">Evento de lançamento</div>
-    <div class="ev-n">BET U LIKE — A Noite</div>
-    <div class="ev-i">
-      <strong>01 de maio · Sexta · 21:30h</strong><br>
-      NarguileAju Hookah Lounge<br><br>
-      CHRISLOPS — Pocket show + lançamento ao vivo<br>
-      DJ CYRUS · LEONES · CINNAMON + convidados<br>
-      Host: Júlio Ferrari<br><br>
-      À meia-noite, a entidade se materializa.
-    </div>
-    <div class="ev-b">ENTRADA GRATUITA · LOTAÇÃO LIMITADA</div>
-  </div>
+<div class="rcard">
+<div class="rc-l">Seu cartao ritual</div>
+<div class="rc-c" style="margin-bottom:20px">Salve e compartilhe. Voce faz parte.</div>
 
-  <div class="social">
-    <a href="https://instagram.com/chrislopsofc" target="_blank">@chrislopsofc</a>
-    <a href="https://instagram.com/decibassoficial" target="_blank">@decibassoficial</a>
-    <a href="https://instagram.com/narguileaju" target="_blank">@narguileaju</a>
-  </div>
+<div class="card-outer">
+<div class="card-preview">
+<div class="card-canvas" id="card-canvas">
+<div class="veins">
+<div class="vn vn-main vm1"></div>
+<div class="vn vn-main vm2"></div>
+<div class="vn vn-main vm3"></div>
+<div class="vn vn-main vm4"></div>
+<div class="vn vn-main vm5"></div>
+<div class="vn vn-thick vt1"></div>
+<div class="vn vn-thick vt2"></div>
+<div class="vn vn-branch vb1"></div>
+<div class="vn vn-branch vb2"></div>
+<div class="vn vn-branch vb3"></div>
+<div class="vn vn-branch vb4"></div>
+<div class="vn vn-branch vb5"></div>
+<div class="vn vn-branch vb6"></div>
+</div>
+<div class="ct-logo">Chrislops</div>
+<div class="ct-rec">Chrislops reconhece</div>
+<div class="ct-name" id="card-name-display">--</div>
+<div class="ct-line">como parte do ritual.</div>
+<div class="ct-line" style="margin-top:16px">Invocacao aceita.</div>
+<div class="ct-line">Purificacao concluida.</div>
+<div class="ct-line ct-hl">Transcendencia em 02.05.2026 as 00h.</div>
+<div class="ct-num" id="card-number-display">No 00</div>
+<div class="ct-foot">Bet U Like - Chrislops</div>
+</div>
+</div>
+<button class="save-btn" onclick="saveCard()">Salvar cartao</button>
+</div>
 
-  <div class="footer">
-    Direção criativa: <a href="https://instagram.com/nardo.psd" target="_blank">@nardo.psd</a> ·
-    Produção: <a href="https://instagram.com/duck4s" target="_blank">@duck4s</a> ·
-    Management: <a href="https://instagram.com/decibassoficial" target="_blank">Decibass</a>
-  </div>
+</div>
+
+</div>
+
+<div class="line"></div>
+
+<!-- SOCIAL -->
+<div class="social">
+<a href="https://instagram.com/chrislopsofc" target="_blank">@chrislopsofc</a>
+<a href="https://instagram.com/decibassoficial" target="_blank">@decibassoficial</a>
+</div>
+
+<!-- FOOTER -->
+<div class="foot">2026 Decibass Music / Chrislops</div>
 
 </div>
 
 <script>
 var API_URL = "";
 
-function updateCD() {
-var target = new Date(2026, 4, 2, 0, 0, 0);
-var now = new Date();
-var diff = target - now;
-var el = document.getElementById("countdown");
-var inv = document.getElementById("inv-text");
-if (!el) return;
-if (diff <= 0) {
-  inv.textContent = "A ENTIDADE SE MATERIALIZOU";
-  inv.style.color = "#aa0000";
-  inv.style.fontWeight = "800";
-  el.innerHTML = "";
-  return;
-}
-var d = Math.floor(diff / 86400000);
-var h = Math.floor((diff % 86400000) / 3600000);
-var m = Math.floor((diff % 3600000) / 60000);
-var s = Math.floor((diff % 60000) / 1000);
-el.innerHTML = '<div class="cd-b"><span class="cd-n">' + d + '</span><span class="cd-u">dias</span></div>' +
-  '<div class="cd-b"><span class="cd-n">' + String(h).padStart(2, "0") + '</span><span class="cd-u">hrs</span></div>' +
-  '<div class="cd-b"><span class="cd-n">' + String(m).padStart(2, "0") + '</span><span class="cd-u">min</span></div>' +
-  '<div class="cd-b"><span class="cd-n">' + String(s).padStart(2, "0") + '</span><span class="cd-u">seg</span></div>';
-}
+// Particles
+(function(){
+  var container = document.getElementById("particles");
+  for(var i = 0; i < 20; i++){
+    var p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = Math.random() * 100 + "%";
+    p.style.animationDuration = (8 + Math.random() * 12) + "s";
+    p.style.animationDelay = Math.random() * 10 + "s";
+    p.style.width = (1 + Math.random() * 2) + "px";
+    p.style.height = p.style.width;
+    container.appendChild(p);
+  }
+})();
 
+// Countdown
+function updateCD(){
+  var target = new Date(2026, 4, 2, 0, 0, 0);
+  var now = new Date();
+  var diff = target - now;
+  var el = document.getElementById("countdown");
+  var inv = document.getElementById("inv-text");
+  if(!el) return;
+  if(diff <= 0){
+    inv.textContent = "A entidade se materializou.";
+    inv.style.color = "#aa0000";
+    el.innerHTML = "";
+    return;
+  }
+  var d = Math.floor(diff / 86400000);
+  var h = Math.floor((diff % 86400000) / 3600000);
+  var m = Math.floor((diff % 3600000) / 60000);
+  var s = Math.floor((diff % 60000) / 1000);
+  el.innerHTML =
+    '<div class="cd-b"><span class="cd-n">' + d + '</span><span class="cd-u">dias</span></div>' +
+    '<div class="cd-b"><span class="cd-n">' + String(h).padStart(2,"0") + '</span><span class="cd-u">hrs</span></div>' +
+    '<div class="cd-b"><span class="cd-n">' + String(m).padStart(2,"0") + '</span><span class="cd-u">min</span></div>' +
+    '<div class="cd-b"><span class="cd-n">' + String(s).padStart(2,"0") + '</span><span class="cd-u">seg</span></div>';
+}
 updateCD();
 setInterval(updateCD, 1000);
 
-function submitForm() {
-var name = document.getElementById("input-name").value.trim();
-var email = document.getElementById("input-email").value.trim();
-var msg = document.getElementById("form-msg");
-var btn = document.getElementById("form-submit");
+// Form
+function submitForm(){
+  var name = document.getElementById("input-name").value.trim();
+  var email = document.getElementById("input-email").value.trim();
+  var msg = document.getElementById("form-msg");
+  var btn = document.getElementById("form-submit");
 
-if (!name) {
-  msg.textContent = "Digite seu nome.";
-  msg.style.color = "#aa0000";
-  return;
-}
-if (!email || email.indexOf("@") < 0) {
-  msg.textContent = "Digite um e-mail valido.";
-  msg.style.color = "#aa0000";
-  return;
-}
+  if(!name){msg.textContent = "Digite seu nome."; msg.style.color = "#aa0000"; return;}
+  if(!email || email.indexOf("@") < 0){msg.textContent = "E-mail invalido."; msg.style.color = "#aa0000"; return;}
 
-btn.disabled = true;
-btn.textContent = "INVOCANDO...";
-msg.textContent = "";
+  btn.disabled = true;
+  btn.textContent = "Invocando...";
+  msg.textContent = "";
 
-var numero = Math.floor(Math.random() * 9000) + 1000;
+  var numero = Math.floor(Math.random() * 9000) + 1000;
 
-if (API_URL && API_URL.indexOf("script.google.com") >= 0) {
-  var url = API_URL + "?action=saveEmail&nome=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email);
-  fetch(url, {method: "GET", redirect: "follow"})
-    .then(function(r) { return r.text(); })
-    .then(function(t) {
-      try {
-        var data = JSON.parse(t);
-        if (data.numero) numero = data.numero;
-      } catch(e) {}
-      showReward(name, numero);
-    })
-    .catch(function() {
-      showReward(name, numero);
-    });
-} else {
-  setTimeout(function() {
-    showReward(name, numero);
-  }, 1500);
-}
+  if(API_URL && API_URL.indexOf("script.google.com") >= 0){
+    var url = API_URL + "?action=saveEmail&nome=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email);
+    fetch(url, {method:"GET", redirect:"follow"})
+      .then(function(r){return r.text();})
+      .then(function(t){
+        try{var data = JSON.parse(t); if(data.numero) numero = data.numero;}catch(e){}
+        showReward(name, numero);
+      })
+      .catch(function(){showReward(name, numero);});
+  } else {
+    setTimeout(function(){showReward(name, numero);}, 2000);
+  }
 }
 
-function showReward(name, numero) {
-document.getElementById("form-section").style.display = "none";
-var reward = document.getElementById("reward-section");
-reward.classList.add("show");
-document.getElementById("card-name-display").textContent = name.toUpperCase();
-document.getElementById("card-number-display").textContent = "No " + numero;
+function showReward(name, numero){
+  document.getElementById("form-section").style.display = "none";
+  document.getElementById("reward-section").classList.add("show");
+  document.getElementById("card-name-display").textContent = name.toUpperCase();
+  document.getElementById("card-number-display").textContent = "No " + numero;
 }
 
-function saveCard() {
-var canvas = document.createElement("canvas");
-var w = 1080;
-var h = 1920;
-canvas.width = w;
-canvas.height = h;
-var ctx = canvas.getContext("2d");
+// Save card
+function saveCard(){
+  var canvas = document.createElement("canvas");
+  var w = 1080;
+  var ht = 1920;
+  canvas.width = w;
+  canvas.height = ht;
+  var ctx = canvas.getContext("2d");
 
-ctx.fillStyle = "#0a0a0a";
-ctx.fillRect(0, 0, w, h);
+  // Background
+  ctx.fillStyle = "#050505";
+  ctx.fillRect(0, 0, w, ht);
 
-ctx.strokeStyle = "rgba(170,0,0,0.15)";
-ctx.lineWidth = 2;
-var angles = [15, -8, 22, -18, 10, -25, 30, -12];
-var xpos = [216, 486, 756, 378, 864, 594, 162, 972];
-for (var v = 0; v < angles.length; v++) {
-  ctx.save();
-  ctx.translate(xpos[v], h / 2);
-  ctx.rotate(angles[v] * Math.PI / 180);
-  ctx.beginPath();
-  ctx.moveTo(0, -h);
-  ctx.lineTo(0, h);
-  ctx.stroke();
-  ctx.restore();
-}
+  // Veins
+  ctx.lineWidth = 2;
+  var mainVeins = [
+    {x:162, a:12}, {x:378, a:-6}, {x:594, a:18},
+    {x:810, a:-14}, {x:972, a:8}
+  ];
+  for(var i = 0; i < mainVeins.length; i++){
+    ctx.strokeStyle = "rgba(170,0,0,0.12)";
+    ctx.save();
+    ctx.translate(mainVeins[i].x, ht/2);
+    ctx.rotate(mainVeins[i].a * Math.PI / 180);
+    ctx.beginPath();
+    ctx.moveTo(0, -ht);
+    ctx.lineTo(0, ht);
+    ctx.stroke();
+    ctx.restore();
+  }
+  // Thick veins
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = "rgba(170,0,0,0.06)";
+  var thickV = [{x:270, a:-20}, {x:702, a:24}];
+  for(var t = 0; t < thickV.length; t++){
+    ctx.save();
+    ctx.translate(thickV[t].x, ht/2);
+    ctx.rotate(thickV[t].a * Math.PI / 180);
+    ctx.beginPath();
+    ctx.moveTo(0, -ht);
+    ctx.lineTo(0, ht);
+    ctx.stroke();
+    ctx.restore();
+  }
+  // Branch veins
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = "rgba(170,0,0,0.07)";
+  var branches = [
+    {x:194, y:480, a:50, l:500},
+    {x:454, y:864, a:-40, l:400},
+    {x:734, y:288, a:60, l:450},
+    {x:886, y:1056, a:-50, l:350},
+    {x:324, y:672, a:35, l:300},
+    {x:540, y:1152, a:-30, l:400}
+  ];
+  for(var b = 0; b < branches.length; b++){
+    ctx.save();
+    ctx.translate(branches[b].x, branches[b].y);
+    ctx.rotate(branches[b].a * Math.PI / 180);
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(0, branches[b].l);
+    ctx.stroke();
+    ctx.restore();
+  }
 
-ctx.strokeStyle = "rgba(170,0,0,0.08)";
-ctx.lineWidth = 1;
-var bx = [240, 520, 780, 400];
-var by = [576, 768, 384, 960];
-var ba = [45, -35, 55, -60];
-for (var b = 0; b < bx.length; b++) {
-  ctx.save();
-  ctx.translate(bx[b], by[b]);
-  ctx.rotate(ba[b] * Math.PI / 180);
-  ctx.beginPath();
-  ctx.moveTo(0, 0);
-  ctx.lineTo(0, 400);
-  ctx.stroke();
-  ctx.restore();
-}
+  // Text
+  ctx.textAlign = "center";
 
-ctx.textAlign = "center";
+  // Logo
+  ctx.fillStyle = "#333333";
+  ctx.font = "700 28px 'Libre Baskerville', Georgia, serif";
+  ctx.fillText("CHRISLOPS", w/2, 200);
 
-ctx.fillStyle = "#484848";
-ctx.font = "700 24px Inter, sans-serif";
-ctx.fillText("CHRISLOPS", w / 2, 180);
+  // Recognizes
+  ctx.fillStyle = "#555555";
+  ctx.font = "400 30px 'Libre Baskerville', Georgia, serif";
+  ctx.fillText("CHRISLOPS RECONHECE", w/2, 700);
 
-ctx.fillStyle = "#484848";
-ctx.font = "600 28px Inter, sans-serif";
-ctx.fillText("CHRISLOPS RECONHECE", w / 2, 680);
+  // Name
+  var name = document.getElementById("card-name-display").textContent;
+  ctx.fillStyle = "#e0e0e0";
+  var fontSize = 72;
+  if(name.length > 20) fontSize = 48;
+  if(name.length > 30) fontSize = 38;
+  ctx.font = "700 " + fontSize + "px 'Libre Baskerville', Georgia, serif";
+  ctx.fillText(name, w/2, 800);
 
-var name = document.getElementById("card-name-display").textContent;
-ctx.fillStyle = "#f2f2f2";
-if (name.length > 25) {
-  ctx.font = "900 36px Inter, sans-serif";
-} else if (name.length > 15) {
-  ctx.font = "900 48px Inter, sans-serif";
-} else {
-  ctx.font = "900 64px Inter, sans-serif";
-}
-ctx.fillText(name, w / 2, 780);
+  // Lines
+  ctx.fillStyle = "#444444";
+  ctx.font = "italic 26px 'Libre Baskerville', Georgia, serif";
+  ctx.fillText("como parte do ritual.", w/2, 880);
+  ctx.fillText("Invocacao aceita.", w/2, 1000);
+  ctx.fillText("Purificacao concluida.", w/2, 1050);
 
-ctx.fillStyle = "#484848";
-ctx.font = "400 26px Inter, sans-serif";
-ctx.fillText("como parte do ritual.", w / 2, 850);
-ctx.fillText("Invocacao aceita.", w / 2, 960);
-ctx.fillText("Purificacao concluida.", w / 2, 1000);
+  // Highlight
+  ctx.fillStyle = "#aa0000";
+  ctx.font = "italic 700 26px 'Libre Baskerville', Georgia, serif";
+  ctx.fillText("Transcendencia em 02.05.2026 as 00h.", w/2, 1140);
 
-ctx.fillStyle = "#aa0000";
-ctx.font = "700 26px Inter, sans-serif";
-ctx.fillText("Transcendencia em 02.05.2026 as 00h.", w / 2, 1080);
+  // Number
+  var num = document.getElementById("card-number-display").textContent;
+  ctx.fillStyle = "#aa0000";
+  ctx.font = "700 36px 'Libre Baskerville', Georgia, serif";
+  ctx.fillText(num, w/2, 1280);
 
-var num = document.getElementById("card-number-display").textContent;
-ctx.fillStyle = "#aa0000";
-ctx.font = "800 32px Inter, sans-serif";
-ctx.fillText(num, w / 2, 1220);
+  // Footer
+  ctx.fillStyle = "#333333";
+  ctx.font = "400 22px 'Libre Baskerville', Georgia, serif";
+  ctx.fillText("BET U LIKE  -  CHRISLOPS", w/2, 1740);
 
-ctx.fillStyle = "#484848";
-ctx.font = "400 22px Inter, sans-serif";
-ctx.fillText("BET U LIKE . CHRISLOPS", w / 2, 1720);
-
-var link = document.createElement("a");
-link.download = "bet-u-like-ritual-" + name.toLowerCase().replace(/[^a-z0-9]/g, "-") + ".png";
-link.href = canvas.toDataURL("image/png");
-link.click();
+  // Download
+  var link = document.createElement("a");
+  link.download = "ritual-" + name.toLowerCase().replace(/[^a-z0-9]/g, "-") + ".png";
+  link.href = canvas.toDataURL("image/png");
+  link.click();
 }
 </script>
-
 
 </body></html>
