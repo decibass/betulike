@@ -1,0 +1,337 @@
+<html lang="pt-BR"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BET U LIKE — CHRISLOPS</title>
+  <meta name="description" content="BET U LIKE — Novo single de CHRISLOPS. Pre-save agora.">
+  <meta name="theme-color" content="#aa0000">
+  <meta property="og:title" content="BET U LIKE — CHRISLOPS">
+  <meta property="og:description" content="Novo single. 02 de maio. Pre-save agora.">
+  <meta property="og:type" content="music.song">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #f2f2f2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .logo {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #686868;
+      margin-bottom: 24px;
+    }
+
+    .single-name {
+      font-size: 42px;
+      font-weight: 900;
+      color: #aa0000;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .artist {
+      font-size: 18px;
+      font-weight: 700;
+      color: #f2f2f2;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #686868;
+      margin-bottom: 40px;
+    }
+
+    .date-badge {
+      display: inline-block;
+      background: rgba(170,0,0,0.15);
+      color: #aa0000;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(170,0,0,0.3);
+      margin-bottom: 32px;
+      letter-spacing: 1px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #f2f2f2;
+      transition: all 0.2s;
+      border: 1px solid #2a2a2a;
+      background: #191919;
+    }
+
+    .link-btn:hover {
+      border-color: #aa0000;
+      background: rgba(170,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .link-btn.primary {
+      background: #aa0000;
+      border-color: #aa0000;
+      font-size: 15px;
+      padding: 16px 24px;
+    }
+
+    .link-btn.primary:hover {
+      background: #cc1a1a;
+    }
+
+    .link-btn .icon {
+      font-size: 20px;
+    }
+
+    .event-card {
+      background: #191919;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .event-card .event-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #aa0000;
+      margin-bottom: 8px;
+    }
+
+    .event-card .event-name {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .event-card .event-info {
+      font-size: 12px;
+      color: #a8a8a8;
+      line-height: 1.8;
+    }
+
+    .event-card .event-info strong {
+      color: #f2f2f2;
+    }
+
+    .event-card .event-badge {
+      display: inline-block;
+      background: rgba(34,197,94,0.15);
+      color: #22c55e;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+
+    .footer {
+      font-size: 11px;
+      color: #686868;
+      line-height: 1.8;
+    }
+
+    .footer a {
+      color: #a8a8a8;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: #f2f2f2;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: #aa0000;
+      margin: 0 auto 32px;
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .cd-block {
+      background: #191919;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 10px 14px;
+      min-width: 60px;
+    }
+
+    .cd-num {
+      font-size: 22px;
+      font-weight: 800;
+      display: block;
+    }
+
+    .cd-unit {
+      font-size: 9px;
+      color: #686868;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Responsivo */
+    @media (max-width: 480px) {
+      .single-name { font-size: 32px; }
+      .artist { font-size: 16px; }
+      .event-card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="logo">CHRISLOPS</div>
+
+  <div class="single-name">BET U LIKE</div>
+  <div class="artist">CHRISLOPS</div>
+  <div class="subtitle">Novo single · Pop funk · 02 de maio</div>
+
+  <div class="date-badge">02 . 05 . 2026</div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown" id="countdown"></div>
+
+  <!-- LINKS (atualizar quando tiver os links reais) -->
+  <div class="links" id="links-section">
+
+    <!-- PRE-SAVE (trocar href quando tiver) -->
+    <a href="#" class="link-btn primary" id="presave-btn">
+      <span class="icon">🎧</span> Pre-save agora
+    </a>
+
+    <!-- Esses links aparecem DEPOIS do lançamento (02/05) -->
+    <!--
+    <a href="LINK_SPOTIFY" class="link-btn">
+      <span class="icon">🟢</span> Ouvir no Spotify
+    </a>
+    <a href="LINK_YOUTUBE" class="link-btn">
+      <span class="icon">▶️</span> Assistir o clipe
+    </a>
+    <a href="LINK_APPLE" class="link-btn">
+      <span class="icon">🍎</span> Apple Music
+    </a>
+    <a href="LINK_DEEZER" class="link-btn">
+      <span class="icon">💜</span> Deezer
+    </a>
+    -->
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- EVENTO -->
+  <div class="event-card">
+    <div class="event-label">Evento de Lançamento</div>
+    <div class="event-name">BET U LIKE — A Noite</div>
+    <div class="event-info">
+      <strong>01 de maio · Sexta · 21:30h</strong><br>
+      NarguileAju Hookah Lounge<br>
+      <br>
+      CHRISLOPS — Pocket show + lançamento ao vivo<br>
+      DJ CYRUS · LEONES · CINNAMON + convidados<br>
+      Host: Júlio Ferrari<br>
+      <br>
+      À meia-noite, a entidade se materializa.
+    </div>
+    <div class="event-badge">ENTRADA GRATUITA · LOTAÇÃO LIMITADA</div>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="links">
+    <a href="https://instagram.com/chrislopsofc" class="link-btn" target="_blank">
+      <span class="icon">📸</span> @chrislopsofc
+    </a>
+    <a href="https://instagram.com/decibassoficial" class="link-btn" target="_blank">
+      <span class="icon">🖤</span> @decibassoficial
+    </a>
+  </div>
+
+  <div class="footer">
+    Direção criativa: <a href="https://instagram.com/nardo.psd" target="_blank">@nardo.psd</a><br>
+    Produção musical: <a href="https://instagram.com/duck4s" target="_blank">@duck4s</a><br>
+    Management: <a href="https://instagram.com/decibassoficial" target="_blank">Decibass</a>
+  </div>
+
+</div>
+
+<script>
+// Countdown
+function updateCD() {
+  var target = new Date(2026, 4, 2, 0, 0, 0);
+  var now = new Date();
+  var diff = target - now;
+  var el = document.getElementById("countdown");
+  if (!el) return;
+
+  if (diff <= 0) {
+    el.innerHTML = '<div style="font-size:14px;font-weight:800;color:#aa0000">JÁ DISPONÍVEL</div>';
+
+    // Mostrar links de streaming e esconder pre-save
+    var ps = document.getElementById("presave-btn");
+    if (ps) ps.style.display = "none";
+    return;
+  }
+
+  var d = Math.floor(diff / 86400000);
+  var h = Math.floor((diff % 86400000) / 3600000);
+  var m = Math.floor((diff % 3600000) / 60000);
+  var s = Math.floor((diff % 60000) / 1000);
+
+  el.innerHTML =
+    '<div class="cd-block"><span class="cd-num">' + d + '</span><span class="cd-unit">dias</span></div>' +
+    '<div class="cd-block"><span class="cd-num">' + String(h).padStart(2,"0") + '</span><span class="cd-unit">hrs</span></div>' +
+    '<div class="cd-block"><span class="cd-num">' + String(m).padStart(2,"0") + '</span><span class="cd-unit">min</span></div>' +
+    '<div class="cd-block"><span class="cd-num">' + String(s).padStart(2,"0") + '</span><span class="cd-unit">seg</span></div>';
+}
+
+updateCD();
+setInterval(updateCD, 1000);
+</script>
+
+
+</body></html>
