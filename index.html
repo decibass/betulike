@@ -102,7 +102,7 @@ body::after{
 }
 
 /* Divider line */
-.line{width:60px;height:1px;background:rgba(170,0,0,.3);margin:0 auto;}
+.line{width:60px;height:1px;background:rgba(170,0,0,.3);margin:0 auto 48px;}
 
 /* CTA */
 .cta{text-align:center;margin:40px 0;}
@@ -151,19 +151,25 @@ body::after{
   text-decoration:none;z-index:3;
   transition:all .4s ease;
 }
-.pp:hover .pp-dot{
-  background:#aa0000;
-  box-shadow:0 0 20px rgba(170,0,0,.8),0 0 40px rgba(170,0,0,.4);
-  transform:scale(1.3);
+.pp-c{
+width:52px;height:52px;border-radius:50%;
+background:#0d0d0d;
+border:1px solid #1a1a1a;
+display:flex;align-items:center;justify-content:center;
+transition:all .4s ease;
 }
-.pp:hover .pp-name{color:#aa0000;}
+.pp:hover .pp-c{
+border-color:#aa0000;
+background:rgba(170,0,0,.08);
+box-shadow:0 0 24px rgba(170,0,0,.4);
+transform:scale(1.15);
+}
+.pp:hover .pp-c svg{
+filter:brightness(1.3);
+}
 
-.pp-dot{
-  width:12px;height:12px;border-radius:50%;
-  background:#333;
-  border:1px solid #555;
-  transition:all .4s ease;
-}
+.pp-c svg{transition:filter .4s ease;}
+
 .pp-name{
   font-family:'Libre Baskerville',serif;
   font-size:9px;font-weight:400;
@@ -286,11 +292,11 @@ body::after{
   border:1px solid #1a1a1a;
 }
 .card-canvas{
-  width:100%;height:100%;position:relative;
-  background:#050505;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:20px;text-align:center;
+width:100%;height:100%;position:relative;
+background:#0a0a0a url('card-bg.png') center/cover no-repeat;
+display:flex;flex-direction:column;
+align-items:center;justify-content:center;
+padding:20px;text-align:center;
 }
 
 /* Veins - more elaborate */
@@ -315,42 +321,42 @@ body::after{
 
 /* Card text */
 .card-canvas .ct-logo{
-  font-family:'Libre Baskerville',serif;
-  font-size:7px;font-weight:700;letter-spacing:5px;
-  text-transform:uppercase;color:#333;
-  margin-bottom:auto;padding-top:24px;z-index:1;
+font-family:'Libre Baskerville',serif;
+font-size:7px;font-weight:700;letter-spacing:5px;
+text-transform:uppercase;color:#1a1a1a;
+margin-bottom:auto;padding-top:24px;z-index:1;
 }
 .card-canvas .ct-rec{
-  font-family:'Libre Baskerville',serif;
-  font-size:8px;font-weight:400;letter-spacing:3px;
-  text-transform:uppercase;color:#555;
-  z-index:1;margin-bottom:6px;
+font-family:'Libre Baskerville',serif;
+font-size:8px;font-weight:400;letter-spacing:3px;
+text-transform:uppercase;color:#1a1a1a;
+z-index:1;margin-bottom:6px;
 }
 .card-canvas .ct-name{
-  font-family:'Libre Baskerville',serif;
-  font-size:18px;font-weight:700;color:#e0e0e0;
-  z-index:1;margin-bottom:20px;line-height:1.3;
+font-family:'Libre Baskerville',serif;
+font-size:18px;font-weight:700;color:#1a1a1a;
+z-index:1;margin-bottom:20px;line-height:1.3;
 }
 .card-canvas .ct-line{
-  font-family:'Libre Baskerville',serif;
-  font-size:8px;color:#444;z-index:1;
-  margin-bottom:4px;letter-spacing:1px;
-  font-style:italic;
+font-family:'Libre Baskerville',serif;
+font-size:8px;color:#1a1a1a;z-index:1;
+margin-bottom:4px;letter-spacing:1px;
+font-style:italic;
 }
 .card-canvas .ct-hl{
-  color:#aa0000;font-style:italic;font-weight:700;
+color:#aa0000;font-style:italic;font-weight:700;
 }
 .card-canvas .ct-num{
-  font-family:'Libre Baskerville',serif;
-  font-size:10px;font-weight:700;color:#aa0000;
-  z-index:1;margin-top:20px;margin-bottom:auto;
-  letter-spacing:3px;
+font-family:'Libre Baskerville',serif;
+font-size:10px;font-weight:700;color:#aa0000;
+z-index:1;margin-top:20px;margin-bottom:auto;
+letter-spacing:3px;
 }
 .card-canvas .ct-foot{
-  font-family:'Libre Baskerville',serif;
-  font-size:7px;letter-spacing:3px;
-  text-transform:uppercase;color:#333;
-  z-index:1;padding-bottom:24px;
+font-family:'Libre Baskerville',serif;
+font-size:7px;letter-spacing:3px;
+text-transform:uppercase;color:#1a1a1a;
+z-index:1;padding-bottom:24px;
 }
 
 .save-btn{
@@ -418,7 +424,7 @@ body::after{
 <!-- CTA -->
 <div class="cta">
 <div class="cta-main">Complete o ritual.</div>
-<div class="cta-sub">Faca o pre-save</div>
+<div class="cta-sub">Faça o pre-save</div>
 </div>
 
 <!-- RITUAL CIRCLE -->
@@ -438,29 +444,27 @@ body::after{
 </div>
 <div class="center-mark"></div>
 
-<a href="#" target="_blank" class="pp pt">
-<div class="pp-dot"></div>
-<div class="pp-name">Spotify</div>
-</a>
-<a href="#" target="_blank" class="pp pr">
-<div class="pp-dot"></div>
-<div class="pp-name">Apple Music</div>
-</a>
-<a href="#" target="_blank" class="pp pb">
-<div class="pp-dot"></div>
-<div class="pp-name">Deezer</div>
-</a>
-<a href="#" target="_blank" class="pp pl">
-<div class="pp-dot"></div>
-<div class="pp-name">YouTube Music</div>
-</a>
+<a href="https://api.ffm.to/sl/e/ps/154173473114?cd=eyJ1YSI6eyJ1YSI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xNDcuMC4wLjAgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXIiOnsibmFtZSI6IkNocm9tZSIsInZlcnNpb24iOiIxNDcuMC4wLjAiLCJtYWpvciI6IjE0NyJ9LCJjcHUiOnsiYXJjaGl0ZWN0dXJlIjoiYW1kNjQifSwiZGV2aWNlIjp7fSwiZW5naW5lIjp7Im5hbWUiOiJCbGluayIsInZlcnNpb24iOiIxNDcuMC4wLjAifSwib3MiOnsibmFtZSI6IldpbmRvd3MiLCJ2ZXJzaW9uIjoiMTAifX0sImNsaWVudCI6eyJyaWQiOiJjYjE4MDcyMC0wMDY1LTQxN2ItYTQ4OS0zY2U1OThmOTIzNWMiLCJzaWQiOiI3MmJkNGIwOS1jMDQwLTRmMmUtYjFiZS01Nzk5MDBmMDAzN2QiLCJpcCI6IjIwNi40Mi41My4xNDciLCJyZWYiOiJodHRwczovL29uZXJwbS5saW5rLyIsImhvc3QiOiJvbmVycG0ubGluayIsImxhbmciOiJwdC1QVCIsImlwQ291bnRyeSI6IkJSIn0sImlzV2VicFN1cHBvcnRlZCI6dHJ1ZSwiZ2RwckVuZm9yY2UiOmZhbHNlLCJjb3VudHJ5Q29kZSI6IkJSIiwiaXNCb3QiOmZhbHNlLCJ1c2VBZmYiOiJvcmlnaW4iLCJ2aWQiOiJkNTliZWJlYy1hOGQ3LTRhMDYtYWM1Yy1mNGEyYzNkNzYwNjQiLCJpZCI6IjY5ZThjMDkyMzEwMDAwMTUwMGU1ZjRkOSIsInBydiI6ZmFsc2UsImlzUHJlUiI6dHJ1ZSwidHpvIjpudWxsLCJjaCI6bnVsbCwiYW4iOm51bGwsImRlc3RVcmwiOiJodHRwczovL2FjY291bnRzLnNwb3RpZnkuY29tL2F1dGhvcml6ZT9jbGllbnRfaWQ9NjZkM2NkYjQ0ODA3NGEwZDg4ZTliMDhiYWFmMmYzZDcmcmVzcG9uc2VfdHlwZT1jb2RlJnJlZGlyZWN0X3VyaT1odHRwcyUzQSUyRiUyRmFwaS5mZm0udG8lMkZ3ZWJob29rJTJGc3BvdGlmeSUyRmF1dGhvcml6ZSZzY29wZT11c2VyLXJlYWQtcHJpdmF0ZSUyMHVzZXItcmVhZC1iaXJ0aGRhdGUlMjB1c2VyLXJlYWQtZW1haWwlMjB1c2VyLWxpYnJhcnktbW9kaWZ5JTIwdXNlci1saWJyYXJ5LXJlYWQlMjB1c2VyLXJlYWQtcmVjZW50bHktcGxheWVkJTIwdXNlci1mb2xsb3ctcmVhZCUyMHVzZXItZm9sbG93LW1vZGlmeSUyMHVzZXItdG9wLXJlYWQlMjBwbGF5bGlzdC1tb2RpZnktcHVibGljJTIwcGxheWxpc3QtcmVhZC1wcml2YXRlJTIwcGxheWxpc3QtbW9kaWZ5LXByaXZhdGUmc3RhdGU9ZXlKa1lreHBibXRKWkNJNklqWTVaVGhqTURreU16RXdNREF3TVRVd01HVTFaalJrT1NJc0ltRmpkR2x2YmxSNWNHVWlPbTUxYkd3c0ltTjBZU0k2SWxCeVpTMVRZWFpsSWl3aWRYTmxja052ZFc1MGNua2lPaUpDVWlJc0luTm9iM0owU1dRaU9pSXhOVFF4TnpNME56TXhNVFFpTENKa2IyMWhhVzRpT2lKb2RIUndjem92TDI5dVpYSndiUzVzYVc1cklpd2ljMlZ5ZG1salpVNWhiV1VpT2lKemNHOTBhV1o1SWl3aWNISnZaSFZqZENJNkluTnRZWEowYkdsdWF5SXNJbkpsWkdseVpXTjBWWEpwSWpvaWFIUjBjSE02THk5dmJtVnljRzB1YkdsdWF5OHhOVFF4TnpNME56TXhNVFF2Y0hKbGMyRjJaV05oYkd4aVlXTnJJaXdpWm1Gc2JHSmhZMnRWY213aU9tNTFiR3dzSW1selVISmxVbVZzWldGelpTSTZkSEoxWlN3aWFYTkdkWFIxY21WU1pXeGxZWE5sSWpwMGNuVmxMQ0poY25ScGMzUkpaQ0k2SWpWbU9HTmxNRFJpTWpZd01EQXdNamM1WWpNMk5qZzROQ0lzSW1GeWRHbHpkRTkzYm1WeUlqb2lOV0k1WWpGa1pqQXhNakF3TURBd016aGxOVEl4WTJVeUlpd2lZV04wYVc5dVNXUWlPbTUxYkd3c0ltZGtjSEpGYm1admNtTmxJanBtWVd4elpTd2liR2x1YTFSNWNHVWlPbTUxYkd3c0luVnpaWEpKVUNJNklqSXdOaTQwTWk0MU15NHhORGNpTENKeVpYZGhjbVJWYzJWeVNXUWlPbTUxYkd3c0luSmxabVZ5Y21Gc1NXUWlPbTUxYkd3c0luVjFhV1FpT2lKa05UbGlaV0psWXkxaE9HUTNMVFJoTURZdFlXTTFZeTFtTkdFeVl6TmtOell3TmpRaWZRIiwic3J2YyI6InNwb3RpZnkiLCJwcm9kdWN0Ijoic21hcnRsaW5rIiwic2hvcnRJZCI6IjE1NDE3MzQ3MzExNCIsImlzQXV0aG9yaXphdGlvblJlcXVpcmVkIjp0cnVlLCJvd25lciI6IjViOWIxZGYwMTIwMDAwMDM4ZTUyMWNlMiIsImFyIjoiNWY4Y2UwNGIyNjAwMDAyNzliMzY2ODg0IiwiaXNTaG9ydExpbmsiOmZhbHNlLCJuYXRpdmUiOmZhbHNlfQ" target="_blank" class="pp pt">
+  <div class="pp-c"><svg width="20" height="20" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></div>
+<div class="pp-name">Spotify</div></a>
+
+<a href="https://api.ffm.to/sl/e/ps/154173473114?cd=eyJ1YSI6eyJ1YSI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xNDcuMC4wLjAgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXIiOnsibmFtZSI6IkNocm9tZSIsInZlcnNpb24iOiIxNDcuMC4wLjAiLCJtYWpvciI6IjE0NyJ9LCJjcHUiOnsiYXJjaGl0ZWN0dXJlIjoiYW1kNjQifSwiZGV2aWNlIjp7fSwiZW5naW5lIjp7Im5hbWUiOiJCbGluayIsInZlcnNpb24iOiIxNDcuMC4wLjAifSwib3MiOnsibmFtZSI6IldpbmRvd3MiLCJ2ZXJzaW9uIjoiMTAifX0sImNsaWVudCI6eyJyaWQiOiJjYjE4MDcyMC0wMDY1LTQxN2ItYTQ4OS0zY2U1OThmOTIzNWMiLCJzaWQiOiI3MmJkNGIwOS1jMDQwLTRmMmUtYjFiZS01Nzk5MDBmMDAzN2QiLCJpcCI6IjIwNi40Mi41My4xNDciLCJyZWYiOiJodHRwczovL29uZXJwbS5saW5rLyIsImhvc3QiOiJvbmVycG0ubGluayIsImxhbmciOiJwdC1QVCIsImlwQ291bnRyeSI6IkJSIn0sImlzV2VicFN1cHBvcnRlZCI6dHJ1ZSwiZ2RwckVuZm9yY2UiOmZhbHNlLCJjb3VudHJ5Q29kZSI6IkJSIiwiaXNCb3QiOmZhbHNlLCJ1c2VBZmYiOiJvcmlnaW4iLCJ2aWQiOiJkNTliZWJlYy1hOGQ3LTRhMDYtYWM1Yy1mNGEyYzNkNzYwNjQiLCJpZCI6IjY5ZThjMDkyMzEwMDAwMTUwMGU1ZjRkOSIsInBydiI6ZmFsc2UsImlzUHJlUiI6dHJ1ZSwidHpvIjpudWxsLCJjaCI6bnVsbCwiYW4iOm51bGwsImRlc3RVcmwiOiJodHRwczovL2FwaS5mZm0udG8vd2ViaG9vay9hcHBsZS9hdXRob3JpemU_c3RhdGU9ZXlKa1lreHBibXRKWkNJNklqWTVaVGhqTURreU16RXdNREF3TVRVd01HVTFaalJrT1NJc0ltRmpkR2x2YmxSNWNHVWlPbTUxYkd3c0ltTjBZU0k2SWxCeVpTMUJaR1FpTENKMWMyVnlRMjkxYm5SeWVTSTZJa0pTSWl3aWMyaHZjblJKWkNJNklqRTFOREUzTXpRM016RXhOQ0lzSW1SdmJXRnBiaUk2SW1oMGRIQnpPaTh2YjI1bGNuQnRMbXhwYm1zaUxDSnpaWEoyYVdObFRtRnRaU0k2SW1Gd2NHeGxJaXdpY0hKdlpIVmpkQ0k2SW5OdFlYSjBiR2x1YXlJc0luSmxaR2x5WldOMFZYSnBJam9pYUhSMGNITTZMeTl2Ym1WeWNHMHViR2x1YXk4eE5UUXhOek0wTnpNeE1UUXZjSEpsYzJGMlpXTmhiR3hpWVdOcklpd2labUZzYkdKaFkydFZjbXdpT201MWJHd3NJbWx6VUhKbFVtVnNaV0Z6WlNJNmRISjFaU3dpYVhOR2RYUjFjbVZTWld4bFlYTmxJanAwY25WbExDSmhjblJwYzNSSlpDSTZJalZtT0dObE1EUmlNall3TURBd01qYzVZak0yTmpnNE5DSXNJbUZ5ZEdsemRFOTNibVZ5SWpvaU5XSTVZakZrWmpBeE1qQXdNREF3TXpobE5USXhZMlV5SWl3aVlXTjBhVzl1U1dRaU9tNTFiR3dzSW1ka2NISkZibVp2Y21ObElqcG1ZV3h6WlN3aWJHbHVhMVI1Y0dVaU9tNTFiR3dzSW5WelpYSkpVQ0k2SWpJd05pNDBNaTQxTXk0eE5EY2lMQ0p5WlhkaGNtUlZjMlZ5U1dRaU9tNTFiR3dzSW5KbFptVnljbUZzU1dRaU9tNTFiR3dzSW5WMWFXUWlPaUprTlRsaVpXSmxZeTFoT0dRM0xUUmhNRFl0WVdNMVl5MW1OR0V5WXpOa056WXdOalFpZlEiLCJzcnZjIjoiYXBwbGUiLCJwcm9kdWN0Ijoic21hcnRsaW5rIiwic2hvcnRJZCI6IjE1NDE3MzQ3MzExNCIsImlzQXV0aG9yaXphdGlvblJlcXVpcmVkIjp0cnVlLCJvd25lciI6IjViOWIxZGYwMTIwMDAwMDM4ZTUyMWNlMiIsImFyIjoiNWY4Y2UwNGIyNjAwMDAyNzliMzY2ODg0IiwiaXNTaG9ydExpbmsiOmZhbHNlLCJuYXRpdmUiOmZhbHNlfQ" target="_blank" class="pp pr">
+<div class="pp-c"><svg width="16" height="16" viewBox="0 0 361 361" fill="#fc3c44"><path d="M255 3H105C48 3 3 48 3 105v150c0 57 45 103 102 103h150c57 0 103-46 103-103V105C358 48 312 3 255 3zM237 182l-90 52c-8 5-18-1-18-11V119c0-10 10-16 18-11l90 52c8 5 8 17 0 22z"/></svg></div>
+<div class="pp-name">Apple Music</div></a>
+
+<a href="https://api.ffm.to/sl/e/ps/154173473114?cd=eyJ1YSI6eyJ1YSI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xNDcuMC4wLjAgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXIiOnsibmFtZSI6IkNocm9tZSIsInZlcnNpb24iOiIxNDcuMC4wLjAiLCJtYWpvciI6IjE0NyJ9LCJjcHUiOnsiYXJjaGl0ZWN0dXJlIjoiYW1kNjQifSwiZGV2aWNlIjp7fSwiZW5naW5lIjp7Im5hbWUiOiJCbGluayIsInZlcnNpb24iOiIxNDcuMC4wLjAifSwib3MiOnsibmFtZSI6IldpbmRvd3MiLCJ2ZXJzaW9uIjoiMTAifX0sImNsaWVudCI6eyJyaWQiOiJjYjE4MDcyMC0wMDY1LTQxN2ItYTQ4OS0zY2U1OThmOTIzNWMiLCJzaWQiOiI3MmJkNGIwOS1jMDQwLTRmMmUtYjFiZS01Nzk5MDBmMDAzN2QiLCJpcCI6IjIwNi40Mi41My4xNDciLCJyZWYiOiJodHRwczovL29uZXJwbS5saW5rLyIsImhvc3QiOiJvbmVycG0ubGluayIsImxhbmciOiJwdC1QVCIsImlwQ291bnRyeSI6IkJSIn0sImlzV2VicFN1cHBvcnRlZCI6dHJ1ZSwiZ2RwckVuZm9yY2UiOmZhbHNlLCJjb3VudHJ5Q29kZSI6IkJSIiwiaXNCb3QiOmZhbHNlLCJ1c2VBZmYiOiJvcmlnaW4iLCJ2aWQiOiJkNTliZWJlYy1hOGQ3LTRhMDYtYWM1Yy1mNGEyYzNkNzYwNjQiLCJpZCI6IjY5ZThjMDkyMzEwMDAwMTUwMGU1ZjRkOSIsInBydiI6ZmFsc2UsImlzUHJlUiI6dHJ1ZSwidHpvIjpudWxsLCJjaCI6bnVsbCwiYW4iOm51bGwsImRlc3RVcmwiOiJodHRwczovL2Nvbm5lY3QuZGVlemVyLmNvbS9vYXV0aC9hdXRoLnBocD9hcHBfaWQ9MTkwMzIyJnJlZGlyZWN0X3VyaT1odHRwcyUzQSUyRiUyRmFwaS5mZm0udG8lMkZ3ZWJob29rJTJGZGVlemVyJTJGYXV0aG9yaXplJnBlcm1zPWVtYWlsJTJDYmFzaWNfYWNjZXNzJTJDb2ZmbGluZV9hY2Nlc3MlMkNtYW5hZ2VfbGlicmFyeSUyQ21hbmFnZV9jb21tdW5pdHklMkNsaXN0ZW5pbmdfaGlzdG9yeSZzdGF0ZT1leUprWWt4cGJtdEpaQ0k2SWpZNVpUaGpNRGt5TXpFd01EQXdNVFV3TUdVMVpqUmtPU0lzSW1GamRHbHZibFI1Y0dVaU9tNTFiR3dzSW1OMFlTSTZJbEJ5WlMxVFlYWmxJaXdpZFhObGNrTnZkVzUwY25raU9pSkNVaUlzSW5Ob2IzSjBTV1FpT2lJeE5UUXhOek0wTnpNeE1UUWlMQ0prYjIxaGFXNGlPaUpvZEhSd2N6b3ZMMjl1WlhKd2JTNXNhVzVySWl3aWMyVnlkbWxqWlU1aGJXVWlPaUprWldWNlpYSWlMQ0p3Y205a2RXTjBJam9pYzIxaGNuUnNhVzVySWl3aWNtVmthWEpsWTNSVmNta2lPaUpvZEhSd2N6b3ZMMjl1WlhKd2JTNXNhVzVyTHpFMU5ERTNNelEzTXpFeE5DOXdjbVZ6WVhabFkyRnNiR0poWTJzaUxDSm1ZV3hzWW1GamExVnliQ0k2Ym5Wc2JDd2lhWE5RY21WU1pXeGxZWE5sSWpwMGNuVmxMQ0pwYzBaMWRIVnlaVkpsYkdWaGMyVWlPblJ5ZFdVc0ltRnlkR2x6ZEVsa0lqb2lOV1k0WTJVd05HSXlOakF3TURBeU56bGlNelkyT0RnMElpd2lZWEowYVhOMFQzZHVaWElpT2lJMVlqbGlNV1JtTURFeU1EQXdNREF6T0dVMU1qRmpaVElpTENKaFkzUnBiMjVKWkNJNmJuVnNiQ3dpWjJSd2NrVnVabTl5WTJVaU9tWmhiSE5sTENKc2FXNXJWSGx3WlNJNmJuVnNiQ3dpZFhObGNrbFFJam9pTWpBMkxqUXlMalV6TGpFME55SXNJbkpsZDJGeVpGVnpaWEpKWkNJNmJuVnNiQ3dpY21WbVpYSnlZV3hKWkNJNmJuVnNiQ3dpZFhWcFpDSTZJbVExT1dKbFltVmpMV0U0WkRjdE5HRXdOaTFoWXpWakxXWTBZVEpqTTJRM05qQTJOQ0o5Iiwic3J2YyI6ImRlZXplciIsInByb2R1Y3QiOiJzbWFydGxpbmsiLCJzaG9ydElkIjoiMTU0MTczNDczMTE0IiwiaXNBdXRob3JpemF0aW9uUmVxdWlyZWQiOnRydWUsIm93bmVyIjoiNWI5YjFkZjAxMjAwMDAwMzhlNTIxY2UyIiwiYXIiOiI1ZjhjZTA0YjI2MDAwMDI3OWIzNjY4ODQiLCJpc1Nob3J0TGluayI6ZmFsc2UsIm5hdGl2ZSI6ZmFsc2V9" target="_blank" class="pp pb">
+<div class="pp-c"><svg width="18" height="18" viewBox="0 0 24 24" fill="#A238FF"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.07 17.07c-.14.26-.46.35-.71.21-1.95-1.19-4.41-1.46-7.31-.8-.28.06-.56-.11-.62-.39s.11-.56.39-.62c3.17-.72 5.89-.41 8.07.93.26.14.35.46.18.67zm1.35-2.83c-.17.28-.54.37-.82.2-2.23-1.37-5.63-1.77-8.27-.97-.3.09-.62-.08-.71-.38-.09-.3.08-.62.38-.71 3.01-.91 6.75-.47 9.3 1.1.28.17.37.54.12.76zm.12-2.95C15.17 9.31 8.82 9.08 5.14 10.21c-.37.11-.76-.1-.87-.47-.11-.37.1-.76.47-.87C8.73 7.62 15.64 7.89 19.34 10c.34.2.45.63.25.97-.2.33-.63.44-.97.22z"/></svg></div>
+<div class="pp-name">Deezer</div></a>
+
+<a href="https://api.ffm.to/sl/e/ps/154173473114?cd=eyJ1YSI6eyJ1YSI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xNDcuMC4wLjAgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXIiOnsibmFtZSI6IkNocm9tZSIsInZlcnNpb24iOiIxNDcuMC4wLjAiLCJtYWpvciI6IjE0NyJ9LCJjcHUiOnsiYXJjaGl0ZWN0dXJlIjoiYW1kNjQifSwiZGV2aWNlIjp7fSwiZW5naW5lIjp7Im5hbWUiOiJCbGluayIsInZlcnNpb24iOiIxNDcuMC4wLjAifSwib3MiOnsibmFtZSI6IldpbmRvd3MiLCJ2ZXJzaW9uIjoiMTAifX0sImNsaWVudCI6eyJyaWQiOiJjYjE4MDcyMC0wMDY1LTQxN2ItYTQ4OS0zY2U1OThmOTIzNWMiLCJzaWQiOiI3MmJkNGIwOS1jMDQwLTRmMmUtYjFiZS01Nzk5MDBmMDAzN2QiLCJpcCI6IjIwNi40Mi41My4xNDciLCJyZWYiOiJodHRwczovL29uZXJwbS5saW5rLyIsImhvc3QiOiJvbmVycG0ubGluayIsImxhbmciOiJwdC1QVCIsImlwQ291bnRyeSI6IkJSIn0sImlzV2VicFN1cHBvcnRlZCI6dHJ1ZSwiZ2RwckVuZm9yY2UiOmZhbHNlLCJjb3VudHJ5Q29kZSI6IkJSIiwiaXNCb3QiOmZhbHNlLCJ1c2VBZmYiOiJvcmlnaW4iLCJ2aWQiOiJkNTliZWJlYy1hOGQ3LTRhMDYtYWM1Yy1mNGEyYzNkNzYwNjQiLCJpZCI6IjY5ZThjMDkyMzEwMDAwMTUwMGU1ZjRkOSIsInBydiI6ZmFsc2UsImlzUHJlUiI6dHJ1ZSwidHpvIjpudWxsLCJjaCI6bnVsbCwiYW4iOm51bGwsImRlc3RVcmwiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvdjIvYXV0aD9hY2Nlc3NfdHlwZT1vZmZsaW5lJmluY2x1ZGVfZ3JhbnRlZF9zY29wZXM9dHJ1ZSZzdGF0ZT1leUprWWt4cGJtdEpaQ0k2SWpZNVpUaGpNRGt5TXpFd01EQXdNVFV3TUdVMVpqUmtPU0lzSW1GamRHbHZibFI1Y0dVaU9tNTFiR3dzSW1OMFlTSTZJbEJ5WlMxVFlYWmxJaXdpZFhObGNrTnZkVzUwY25raU9pSkNVaUlzSW5Ob2IzSjBTV1FpT2lJeE5UUXhOek0wTnpNeE1UUWlMQ0prYjIxaGFXNGlPaUpvZEhSd2N6b3ZMMjl1WlhKd2JTNXNhVzVySWl3aWMyVnlkbWxqWlU1aGJXVWlPaUo1YjNWMGRXSmxiWFZ6YVdNaUxDSndjbTlrZFdOMElqb2ljMjFoY25Sc2FXNXJJaXdpY21Wa2FYSmxZM1JWY21raU9pSm9kSFJ3Y3pvdkwyOXVaWEp3YlM1c2FXNXJMekUxTkRFM016UTNNekV4TkM5d2NtVnpZWFpsWTJGc2JHSmhZMnNpTENKbVlXeHNZbUZqYTFWeWJDSTZiblZzYkN3aWFYTlFjbVZTWld4bFlYTmxJanAwY25WbExDSnBjMFoxZEhWeVpWSmxiR1ZoYzJVaU9uUnlkV1VzSW1GeWRHbHpkRWxrSWpvaU5XWTRZMlV3TkdJeU5qQXdNREF5TnpsaU16WTJPRGcwSWl3aVlYSjBhWE4wVDNkdVpYSWlPaUkxWWpsaU1XUm1NREV5TURBd01EQXpPR1UxTWpGalpUSWlMQ0poWTNScGIyNUpaQ0k2Ym5Wc2JDd2laMlJ3Y2tWdVptOXlZMlVpT21aaGJITmxMQ0pzYVc1clZIbHdaU0k2Ym5Wc2JDd2lkWE5sY2tsUUlqb2lNakEyTGpReUxqVXpMakUwTnlJc0luSmxkMkZ5WkZWelpYSkpaQ0k2Ym5Wc2JDd2ljbVZtWlhKeVlXeEpaQ0k2Ym5Wc2JDd2lkWFZwWkNJNkltUTFPV0psWW1WakxXRTRaRGN0TkdFd05pMWhZelZqTFdZMFlUSmpNMlEzTmpBMk5DSjkmcmVzcG9uc2VfdHlwZT1jb2RlJmNvbnNlbnQ9UGxlYXNlJTIwYWxsb3cmcHJvbXB0PWNvbnNlbnQmc2NvcGU9aHR0cHMlM0ElMkYlMkZ3d3cuZ29vZ2xlYXBpcy5jb20lMkZhdXRoJTJGeW91dHViZSUyMGh0dHBzJTNBJTJGJTJGd3d3Lmdvb2dsZWFwaXMuY29tJTJGYXV0aCUyRnVzZXJpbmZvLnByb2ZpbGUlMjBodHRwcyUzQSUyRiUyRnd3dy5nb29nbGVhcGlzLmNvbSUyRmF1dGglMkZ1c2VyaW5mby5lbWFpbCUyMGh0dHBzJTNBJTJGJTJGd3d3Lmdvb2dsZWFwaXMuY29tJTJGYXV0aCUyRm11c2ljJmNsaWVudF9pZD03Njc4Mjc5MjMwMjctaGdramFmamJqaTEydXJ1dmxpNXQ5cWxtZGF0a3B2MjIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20mcmVkaXJlY3RfdXJpPWh0dHBzJTNBJTJGJTJGYXBpLmZmbS50byUyRndlYmhvb2slMkZ5b3V0dWJlJTJGYXV0aG9yaXplIiwic3J2YyI6InlvdXR1YmVtdXNpYyIsInByb2R1Y3QiOiJzbWFydGxpbmsiLCJzaG9ydElkIjoiMTU0MTczNDczMTE0IiwiaXNBdXRob3JpemF0aW9uUmVxdWlyZWQiOnRydWUsIm93bmVyIjoiNWI5YjFkZjAxMjAwMDAwMzhlNTIxY2UyIiwiYXIiOiI1ZjhjZTA0YjI2MDAwMDI3OWIzNjY4ODQiLCJpc1Nob3J0TGluayI6ZmFsc2UsIm5hdGl2ZSI6ZmFsc2V9" target="_blank" class="pp pl">
+  <div class="pp-c"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm4.872 16.166c-1.728 0-2.952-.84-3.936-1.846l-.024.012L12 17.748V20.4h-1.2v-8.4h1.2v1.536l.012-.012c.96-1.128 2.232-1.92 3.864-1.92 2.616 0 4.524 2.112 4.524 4.776 0 2.688-1.908 4.786-4.528 4.786zm-.168-8.352c-1.56 0-2.832-.612-3.696-1.584V7.8H12v-6h1.2v2.652c.852-.984 2.124-1.656 3.504-1.656 2.616 0 4.692 2.088 4.692 4.512 0 2.4-2.076 4.506-4.692 4.506z"/></svg></div>
+<div class="pp-name">YouTube Music</div></a>
+
 </div>
 
 <!-- COUNTDOWN -->
 <div class="inv" id="inv-text">A entidade se materializa em</div>
 <div class="countdown" id="countdown"></div>
-
-<div class="quote">"I bet u will like."</div>
 
 <div class="line"></div>
 
@@ -477,61 +481,38 @@ body::after{
 <!-- REWARD -->
 <div class="reward" id="reward-section">
 
-<div class="reward-title">Chrislops reconhece voce.</div>
+<div class="reward-title">Chrislops reconhece você.</div>
 
 <div class="rcard">
-<div class="rc-l">Fragmento do ritual</div>
-<div class="rc-c">Um trecho de BET U LIKE antes de todo mundo. Uma mensagem de Chrislops para voce.</div>
-<div class="placeholder-note">Disponivel em breve.</div>
-</div>
-
-<div class="rcard">
-<div class="rc-l">Canal secreto</div>
-<div class="rc-c">O canal exclusivo de Chrislops no Instagram. Tudo chega la primeiro.</div>
-<a href="#" class="btn-sec">Em breve</a>
-</div>
-
-<div class="rcard">
-<div class="rc-l">Seu cartao ritual</div>
-<div class="rc-c" style="margin-bottom:20px">Salve e compartilhe. Voce faz parte.</div>
+<div class="rc-l">Seu cartão ritual</div>
+<div class="rc-c" style="margin-bottom:20px">Salve e compartilhe nos stories. Você faz parte.</div>
 
 <div class="card-outer">
 <div class="card-preview">
 <div class="card-canvas" id="card-canvas">
-<div class="veins">
-<div class="vn vn-main vm1"></div>
-<div class="vn vn-main vm2"></div>
-<div class="vn vn-main vm3"></div>
-<div class="vn vn-main vm4"></div>
-<div class="vn vn-main vm5"></div>
-<div class="vn vn-thick vt1"></div>
-<div class="vn vn-thick vt2"></div>
-<div class="vn vn-branch vb1"></div>
-<div class="vn vn-branch vb2"></div>
-<div class="vn vn-branch vb3"></div>
-<div class="vn vn-branch vb4"></div>
-<div class="vn vn-branch vb5"></div>
-<div class="vn vn-branch vb6"></div>
-</div>
 <div class="ct-logo">Chrislops</div>
 <div class="ct-rec">Chrislops reconhece</div>
 <div class="ct-name" id="card-name-display">--</div>
 <div class="ct-line">como parte do ritual.</div>
-<div class="ct-line" style="margin-top:16px">Invocacao aceita.</div>
-<div class="ct-line">Purificacao concluida.</div>
-<div class="ct-line ct-hl">Transcendencia em 02.05.2026 as 00h.</div>
+<div class="ct-line" style="margin-top:16px">Invocação aceita.</div>
+<div class="ct-line">Purificação concluida.</div>
+<div class="ct-line ct-hl">Transcendência em 02.05.2026 às 00h.</div>
 <div class="ct-num" id="card-number-display">No 00</div>
 <div class="ct-foot">Bet U Like - Chrislops</div>
 </div>
 </div>
-<button class="save-btn" onclick="saveCard()">Salvar cartao</button>
+<button class="save-btn" onclick="saveCard()">Salvar cartão</button>
 </div>
 
 </div>
 
+<div class="rcard">
+<div class="rc-l">Canal secreto</div>
+<div class="rc-c">Entre no canal exclusivo de Chrislops no Instagram. Tudo chega lá primeiro.</div>
+<a href="https://www.instagram.com/channel/AbZBUz385WTdrQ5Q/" target="_blank" class="btn-sec">Entrar no canal</a>
 </div>
 
-<div class="line"></div>
+</div>
 
 <!-- SOCIAL -->
 <div class="social">
@@ -628,120 +609,69 @@ function showReward(name, numero){
 
 // Save card
 function saveCard(){
-  var canvas = document.createElement("canvas");
-  var w = 1080;
-  var ht = 1920;
-  canvas.width = w;
-  canvas.height = ht;
-  var ctx = canvas.getContext("2d");
+var canvas = document.createElement("canvas");
+var w = 1080;
+var ht = 1920;
+canvas.width = w;
+canvas.height = ht;
+var ctx = canvas.getContext("2d");
 
-  // Background
-  ctx.fillStyle = "#050505";
+var img = new Image();
+img.crossOrigin = "anonymous";
+img.onload = function(){
+  ctx.drawImage(img, 0, 0, w, ht);
+  drawCardText(ctx, w, ht, canvas);
+};
+img.onerror = function(){
+  ctx.fillStyle = "#e8dcc8";
   ctx.fillRect(0, 0, w, ht);
+  drawCardText(ctx, w, ht, canvas);
+};
+img.src = window.location.origin + window.location.pathname.replace("index.html","") + "card-bg.png";
+}
 
-  // Veins
-  ctx.lineWidth = 2;
-  var mainVeins = [
-    {x:162, a:12}, {x:378, a:-6}, {x:594, a:18},
-    {x:810, a:-14}, {x:972, a:8}
-  ];
-  for(var i = 0; i < mainVeins.length; i++){
-    ctx.strokeStyle = "rgba(170,0,0,0.12)";
-    ctx.save();
-    ctx.translate(mainVeins[i].x, ht/2);
-    ctx.rotate(mainVeins[i].a * Math.PI / 180);
-    ctx.beginPath();
-    ctx.moveTo(0, -ht);
-    ctx.lineTo(0, ht);
-    ctx.stroke();
-    ctx.restore();
-  }
-  // Thick veins
-  ctx.lineWidth = 3;
-  ctx.strokeStyle = "rgba(170,0,0,0.06)";
-  var thickV = [{x:270, a:-20}, {x:702, a:24}];
-  for(var t = 0; t < thickV.length; t++){
-    ctx.save();
-    ctx.translate(thickV[t].x, ht/2);
-    ctx.rotate(thickV[t].a * Math.PI / 180);
-    ctx.beginPath();
-    ctx.moveTo(0, -ht);
-    ctx.lineTo(0, ht);
-    ctx.stroke();
-    ctx.restore();
-  }
-  // Branch veins
-  ctx.lineWidth = 1;
-  ctx.strokeStyle = "rgba(170,0,0,0.07)";
-  var branches = [
-    {x:194, y:480, a:50, l:500},
-    {x:454, y:864, a:-40, l:400},
-    {x:734, y:288, a:60, l:450},
-    {x:886, y:1056, a:-50, l:350},
-    {x:324, y:672, a:35, l:300},
-    {x:540, y:1152, a:-30, l:400}
-  ];
-  for(var b = 0; b < branches.length; b++){
-    ctx.save();
-    ctx.translate(branches[b].x, branches[b].y);
-    ctx.rotate(branches[b].a * Math.PI / 180);
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(0, branches[b].l);
-    ctx.stroke();
-    ctx.restore();
-  }
+function drawCardText(ctx, w, ht, canvas){
+ctx.textAlign = "center";
 
-  // Text
-  ctx.textAlign = "center";
+ctx.fillStyle = "#1a1a1a";
+ctx.font = "700 28px 'Libre Baskerville', Georgia, serif";
+ctx.fillText("CHRISLOPS", w/2, 200);
 
-  // Logo
-  ctx.fillStyle = "#333333";
-  ctx.font = "700 28px 'Libre Baskerville', Georgia, serif";
-  ctx.fillText("CHRISLOPS", w/2, 200);
+ctx.fillStyle = "#1a1a1a";
+ctx.font = "400 30px 'Libre Baskerville', Georgia, serif";
+ctx.fillText("CHRISLOPS RECONHECE", w/2, 700);
 
-  // Recognizes
-  ctx.fillStyle = "#555555";
-  ctx.font = "400 30px 'Libre Baskerville', Georgia, serif";
-  ctx.fillText("CHRISLOPS RECONHECE", w/2, 700);
+var name = document.getElementById("card-name-display").textContent;
+ctx.fillStyle = "#0a0a0a";
+var fontSize = 72;
+if(name.length > 20) fontSize = 48;
+if(name.length > 30) fontSize = 38;
+ctx.font = "700 " + fontSize + "px 'Libre Baskerville', Georgia, serif";
+ctx.fillText(name, w/2, 800);
 
-  // Name
-  var name = document.getElementById("card-name-display").textContent;
-  ctx.fillStyle = "#e0e0e0";
-  var fontSize = 72;
-  if(name.length > 20) fontSize = 48;
-  if(name.length > 30) fontSize = 38;
-  ctx.font = "700 " + fontSize + "px 'Libre Baskerville', Georgia, serif";
-  ctx.fillText(name, w/2, 800);
+ctx.fillStyle = "#1a1a1a";
+ctx.font = "italic 26px 'Libre Baskerville', Georgia, serif";
+ctx.fillText("como parte do ritual.", w/2, 880);
+ctx.fillText("Invocacao aceita.", w/2, 1000);
+ctx.fillText("Purificacao concluida.", w/2, 1050);
 
-  // Lines
-  ctx.fillStyle = "#444444";
-  ctx.font = "italic 26px 'Libre Baskerville', Georgia, serif";
-  ctx.fillText("como parte do ritual.", w/2, 880);
-  ctx.fillText("Invocacao aceita.", w/2, 1000);
-  ctx.fillText("Purificacao concluida.", w/2, 1050);
+ctx.fillStyle = "#aa0000";
+ctx.font = "italic 700 26px 'Libre Baskerville', Georgia, serif";
+ctx.fillText("Transcendencia em 02.05.2026 as 00h.", w/2, 1140);
 
-  // Highlight
-  ctx.fillStyle = "#aa0000";
-  ctx.font = "italic 700 26px 'Libre Baskerville', Georgia, serif";
-  ctx.fillText("Transcendencia em 02.05.2026 as 00h.", w/2, 1140);
+var num = document.getElementById("card-number-display").textContent;
+ctx.fillStyle = "#aa0000";
+ctx.font = "700 36px 'Libre Baskerville', Georgia, serif";
+ctx.fillText(num, w/2, 1280);
 
-  // Number
-  var num = document.getElementById("card-number-display").textContent;
-  ctx.fillStyle = "#aa0000";
-  ctx.font = "700 36px 'Libre Baskerville', Georgia, serif";
-  ctx.fillText(num, w/2, 1280);
+ctx.fillStyle = "#1a1a1a";
+ctx.font = "400 22px 'Libre Baskerville', Georgia, serif";
+ctx.fillText("BET U LIKE  -  CHRISLOPS", w/2, 1740);
 
-  // Footer
-  ctx.fillStyle = "#333333";
-  ctx.font = "400 22px 'Libre Baskerville', Georgia, serif";
-  ctx.fillText("BET U LIKE  -  CHRISLOPS", w/2, 1740);
-
-  // Download
-  var link = document.createElement("a");
-  link.download = "ritual-" + name.toLowerCase().replace(/[^a-z0-9]/g, "-") + ".png";
-  link.href = canvas.toDataURL("image/png");
-  link.click();
+var link = document.createElement("a");
+link.download = "ritual-" + name.toLowerCase().replace(/[^a-z0-9]/g, "-") + ".png";
+link.href = canvas.toDataURL("image/png");
+link.click();
 }
 </script>
 
