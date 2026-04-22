@@ -634,39 +634,41 @@ function drawCardText(ctx, w, ht, canvas){
 ctx.textAlign = "center";
 
 ctx.fillStyle = "#1a1a1a";
-ctx.font = "700 28px 'Libre Baskerville', Georgia, serif";
-ctx.fillText("CHRISLOPS", w/2, 200);
+ctx.font = "700 36px 'Libre Baskerville', Georgia, serif";
+ctx.fillText("CHRISLOPS", w/2, 160);
 
 ctx.fillStyle = "#1a1a1a";
-ctx.font = "400 30px 'Libre Baskerville', Georgia, serif";
-ctx.fillText("CHRISLOPS RECONHECE", w/2, 700);
+ctx.font = "400 38px 'Libre Baskerville', Georgia, serif";
+ctx.fillText("CHRISLOPS RECONHECE", w/2, 740);
 
 var name = document.getElementById("card-name-display").textContent;
 ctx.fillStyle = "#0a0a0a";
-var fontSize = 72;
-if(name.length > 20) fontSize = 48;
-if(name.length > 30) fontSize = 38;
+var fontSize = 96;
+if(name.length > 15) fontSize = 72;
+if(name.length > 25) fontSize = 56;
 ctx.font = "700 " + fontSize + "px 'Libre Baskerville', Georgia, serif";
-ctx.fillText(name, w/2, 800);
+ctx.fillText(name, w/2, 860);
 
 ctx.fillStyle = "#1a1a1a";
-ctx.font = "italic 26px 'Libre Baskerville', Georgia, serif";
-ctx.fillText("como parte do ritual.", w/2, 880);
-ctx.fillText("Invocacao aceita.", w/2, 1000);
-ctx.fillText("Purificacao concluida.", w/2, 1050);
+ctx.font = "italic 32px 'Libre Baskerville', Georgia, serif";
+ctx.fillText("como parte do ritual.", w/2, 940);
+
+ctx.font = "italic 32px 'Libre Baskerville', Georgia, serif";
+ctx.fillText("Invocacao aceita.", w/2, 1060);
+ctx.fillText("Purificacao concluida.", w/2, 1110);
 
 ctx.fillStyle = "#aa0000";
-ctx.font = "italic 700 26px 'Libre Baskerville', Georgia, serif";
-ctx.fillText("Transcendencia em 02.05.2026 as 00h.", w/2, 1140);
+ctx.font = "italic 700 34px 'Libre Baskerville', Georgia, serif";
+ctx.fillText("Transcendencia em 02.05.2026 as 00h.", w/2, 1220);
 
 var num = document.getElementById("card-number-display").textContent;
 ctx.fillStyle = "#aa0000";
-ctx.font = "700 36px 'Libre Baskerville', Georgia, serif";
-ctx.fillText(num, w/2, 1280);
+ctx.font = "700 48px 'Libre Baskerville', Georgia, serif";
+ctx.fillText(num, w/2, 1360);
 
 ctx.fillStyle = "#1a1a1a";
-ctx.font = "400 22px 'Libre Baskerville', Georgia, serif";
-ctx.fillText("BET U LIKE  -  CHRISLOPS", w/2, 1740);
+ctx.font = "400 28px 'Libre Baskerville', Georgia, serif";
+ctx.fillText("BET U LIKE  -  CHRISLOPS", w/2, 1760);
 
 var link = document.createElement("a");
 link.download = "ritual-" + name.toLowerCase().replace(/[^a-z0-9]/g, "-") + ".png";
